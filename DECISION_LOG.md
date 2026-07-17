@@ -76,6 +76,19 @@ These are implementation-detail decisions that can be accepted during repository
 | R-008 | Default to bounded task packets, one write owner per file, and at most three parallel implementation agents | Reduces conflicts while retaining useful concurrency |
 | R-009 | Use isolated Git worktrees for parallel implementation when tasks are genuinely disjoint | Adds workspace management but protects user changes and integration clarity |
 
+# Bootstrap implementation decisions — 2026-07-17
+
+The explicit implementation authorization accepted the authorized bootstrap defaults and permits low-risk, reversible technical choices. These records resolve R-001 and R-003 for the bootstrap without changing product scope.
+
+| ID | Decision | Rationale / consequence |
+|---|---|---|
+| I-001 | Use pnpm 11.13.1 and a package-manager-generated lockfile | Resolves R-001 and fixes a reproducible package-manager baseline |
+| I-002 | Baseline Node.js 24.18.0, Astro 7.1.0, React 19.2.7, and `@astrojs/cloudflare` 14.1.3 | Current compatible releases under D-015/D-016; exact versions require independent build and Worker verification |
+| I-003 | Keep Astro static by default; future dynamic routes opt out of prerendering explicitly | Preserves NFR-06 static degradation and free-tier asset-first behavior |
+| I-004 | Use version-controlled JSON catalog records with shared Zod build/runtime validation | Resolves R-003 for cross-entity ownership, invalid fixtures, and fail-closed publication/provenance gates |
+| I-005 | Use `wrangler.jsonc` and explicit local/no-provision bootstrap commands | Prevents unauthorized remote resource creation or deployment |
+| I-006 | Pin TypeScript 6.0.3 rather than current 7.0.2 | Selected `typescript-eslint` compatibility is `<6.1`; avoids an unsupported lint/type toolchain |
+
 # Blocked / launch gates
 
 | ID | Blocker | Resolution owner |
@@ -105,9 +118,9 @@ These proposals remain isolated and must not enter MVP navigation, requirements,
 
 The model-routing and role-separation policy in `AGENTS.md` is confirmed. Before implementation begins, confirm these remaining implementation details:
 
-- [ ] `pnpm` package manager.
+- [x] `pnpm` package manager — accepted for bootstrap as I-001.
 - [ ] Passkey + recovery-code account design.
-- [ ] Catalog file format: JSON/YAML/content collections.
+- [x] Catalog file format — version-controlled JSON plus Zod, accepted for bootstrap as I-004.
 - [ ] Exact initial font pair after language/license test.
 - [ ] Analytics retention of 30 days.
 - [ ] Public-event legal review path.
