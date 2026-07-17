@@ -6,4 +6,12 @@
     "directory": "./dist",
     "run_worker_first": false,
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "game-portal-local",
+      "migrations_dir": "migrations",
+      "remote": false,
+    },
+  ],
 }
