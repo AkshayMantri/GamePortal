@@ -3,6 +3,8 @@ node_modules/
 dist/
 .astro/
 .wrangler/
+test-results/
+playwright-report/
 
 # Local environment and Cloudflare development values
 .env
