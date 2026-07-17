@@ -89,6 +89,10 @@ The explicit implementation authorization accepted the authorized bootstrap defa
 | I-005 | Use `wrangler.jsonc` and explicit local/no-provision bootstrap commands | Prevents unauthorized remote resource creation or deployment |
 | I-006 | Pin TypeScript 6.0.3 rather than current 7.0.2 | Selected `typescript-eslint` compatibility is `<6.1`; avoids an unsupported lint/type toolchain |
 | I-007 | Keep `@astrojs/cloudflare` pinned but inactive while every route is static | Adapter 14.1.3 injected unapproved Session KV and Images bindings when activated; static Workers assets need no adapter, and activation returns to Sol High before the first on-demand route |
+| I-008 | Use ESLint 9.39.2 with `eslint-plugin-astro` 1.7.0 and `eslint-plugin-jsx-a11y` 6.10.2 | Astro plugin 3 requires ESLint 10 while JSX-a11y 6.10.2 supports only through ESLint 9; this is the newest mutually declared compatible lint matrix without peer overrides |
+| I-009 | Publish only two bootstrap proof records, Chess and Go, and leave the other 18 candidate slots unrepresented | Primary FIDE/BGA sources, original summaries, explicit unknown age/time, and local neutral media prove the full catalog contract without fabricating the target seed slate |
+| I-010 | Use a binding-only local D1 database for append-only link observations and a current-status projection | Installed Wrangler 4.111 accepts a binding without a remote ID; all commands require `--local`, and no account, vote, event, or analytics tables are introduced speculatively |
+| I-011 | Treat `PACKAGE_MANIFEST.json` and `SHA256SUMS.txt` as a scoped repository authority snapshot | The original archive manifest became stale after authorized decision updates and the AGENTS.md checksum waiver; the repository now verifies the current authority files deterministically without pretending to inventory application code |
 
 # Blocked / launch gates
 

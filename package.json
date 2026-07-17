@@ -12,6 +12,7 @@
     "dev": "astro dev",
     "catalog:validate": "node scripts/validate-catalog.ts",
     "d1:migrate:local": "wrangler d1 migrations apply DB --local",
+    "integrity:check": "node scripts/validate-package-integrity.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0",
@@ -23,8 +24,8 @@
     "test:browser": "pnpm build && playwright test",
     "test:browser:built": "playwright test",
     "preview": "astro preview",
-    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm test:unit && pnpm test:browser",
-    "verify:ci": "pnpm format:check && pnpm lint && pnpm check && pnpm test:unit && pnpm build && pnpm test:browser:built"
+    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm integrity:check && pnpm test:unit && pnpm test:browser",
+    "verify:ci": "pnpm format:check && pnpm lint && pnpm check && pnpm integrity:check && pnpm test:unit && pnpm build && pnpm test:browser:built"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.1.3",
