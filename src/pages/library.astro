@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Library | Game Portal";
+const description =
+  "Library will hold optional favorites, recent views, played games, and explainable recommendations. Persistence is forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="A personal index"
+    heading="Library"
+    purpose="Library will organize optional favorites, recent views, played games, and explainable recommendations."
+    forthcoming="Local storage, account sync, and all Library behavior are reserved for a later milestone."
+  />
+</BaseLayout>

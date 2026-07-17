@@ -1,3 +1,6 @@
+import { readdir, readFile } from "node:fs/promises";
+import { join, resolve } from "node:path";
+
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
@@ -5,6 +8,17 @@ const browserErrors = new WeakMap<
   Page,
   { consoleErrors: string[]; pageErrors: string[] }
 >();
+
+async function listFiles(directory: string): Promise<string[]> {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map((entry) => {
+      const path = join(directory, entry.name);
+      return entry.isDirectory() ? listFiles(path) : [path];
+    }),
+  );
+  return files.flat();
+}
 
 test.beforeEach(async ({ page }) => {
   const consoleErrors: string[] = [];
@@ -41,7 +55,7 @@ test("renders a semantic static shell without overflow or external assets", asyn
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Bring the right game to the table.",
+      name: "Find",
     }),
   ).toBeVisible();
 
@@ -66,6 +80,24 @@ test("renders a semantic static shell without overflow or external assets", asyn
   expect(externalFontOrMedia).toEqual([]);
 });
 
+test("emits no JavaScript assets, script references, or Astro islands", async () => {
+  const distRoot = resolve(process.cwd(), "dist");
+  const files = await listFiles(distRoot);
+  const javascriptAssets = files.filter((path) => /\.(?:c|m)?js$/i.test(path));
+  expect(javascriptAssets).toEqual([]);
+
+  const htmlFiles = files.filter((path) => path.endsWith(".html"));
+  expect(htmlFiles).toHaveLength(10);
+  const htmlDocuments = await Promise.all(
+    htmlFiles.map((path) => readFile(path, "utf8")),
+  );
+  for (const html of htmlDocuments) {
+    expect(html).not.toMatch(/<script\b/i);
+    expect(html).not.toMatch(/<astro-island\b/i);
+    expect(html).not.toMatch(/\/_astro\/[^"']+\.(?:c|m)?js\b/i);
+  }
+});
+
 test("exposes a visible keyboard skip link with a valid target", async ({
   page,
 }) => {
@@ -81,7 +113,48 @@ test("exposes a visible keyboard skip link with a valid target", async ({
 
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/#main-content$/);
-  await expect(page.locator("#main-content")).toBeVisible();
+  await expect(page.locator("#main-content")).toBeFocused();
+});
+
+test("loads the self-hosted English-first font pair without synthetic weights", async ({
+  page,
+}) => {
+  const coverage = await page.evaluate(async () => {
+    const sample =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 &!?–—’“”";
+    const faces = [
+      '400 48px "Fraunces"',
+      '600 48px "Fraunces"',
+      '400 18px "Source Sans 3"',
+      '600 18px "Source Sans 3"',
+      '700 18px "Source Sans 3"',
+    ];
+    await Promise.all(faces.map((face) => document.fonts.load(face, sample)));
+    return {
+      faces: faces.map((face) => document.fonts.check(face, sample)),
+      headingFamily: getComputedStyle(document.querySelector("h1")!).fontFamily,
+      bodyFamily: getComputedStyle(document.body).fontFamily,
+    };
+  });
+
+  expect(coverage.faces).toEqual([true, true, true, true, true]);
+  expect(coverage.headingFamily).toContain("Fraunces");
+  expect(coverage.bodyFamily).toContain("Source Sans 3");
+});
+
+test("keeps the Find scaffold readable when JavaScript is disabled", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const noScriptPage = await context.newPage();
+  await noScriptPage.goto("/");
+  await expect(
+    noScriptPage.getByRole("heading", { level: 1, name: "Find" }),
+  ).toBeVisible();
+  await expect(
+    noScriptPage.getByRole("link", { name: "Browse", exact: true }).first(),
+  ).toBeVisible();
+  await context.close();
 });
 
 test("has no serious or critical automated accessibility violations", async ({

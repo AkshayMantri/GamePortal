@@ -101,15 +101,50 @@ describe("static-first foundation", () => {
     expect(baseline).not.toMatch(/-----BEGIN [A-Z ]*PRIVATE KEY-----/);
   });
 
-  it("keeps the landing page free of client hydration directives", async () => {
-    const page = await readFile(projectFile("src/pages/index.astro"), "utf8");
+  it("keeps the application shell and route scaffolds free of client hydration directives", async () => {
+    const routeNames = [
+      "index",
+      "find",
+      "browse",
+      "random",
+      "vote",
+      "game-nights",
+      "popular",
+      "library",
+      "account",
+      "more",
+    ];
+    const pages = await Promise.all(
+      routeNames.map((name) =>
+        readFile(projectFile(`src/pages/${name}.astro`), "utf8"),
+      ),
+    );
     const layout = await readFile(
       projectFile("src/layouts/BaseLayout.astro"),
       "utf8",
     );
 
-    expect(`${page}\n${layout}`).not.toMatch(
+    expect(`${pages.join("\n")}\n${layout}`).not.toMatch(
       /client:(?:load|idle|visible|media|only)/,
     );
+  });
+
+  it("keeps typography local, swap-safe, and limited to supplied weights", async () => {
+    const css = await readFile(projectFile("src/styles/global.css"), "utf8");
+    const expectedFonts = [
+      "public/fonts/fraunces/Fraunces72pt-Regular.woff2",
+      "public/fonts/fraunces/Fraunces72pt-SemiBold.woff2",
+      "public/fonts/source-sans-3/SourceSans3-Regular.ttf.woff2",
+      "public/fonts/source-sans-3/SourceSans3-Semibold.ttf.woff2",
+      "public/fonts/source-sans-3/SourceSans3-Bold.ttf.woff2",
+    ];
+
+    await expect(
+      Promise.all(expectedFonts.map((path) => readFile(projectFile(path)))),
+    ).resolves.toHaveLength(5);
+    expect(css.match(/@font-face/g)).toHaveLength(5);
+    expect(css.match(/font-display: swap/g)).toHaveLength(5);
+    expect(css).not.toMatch(/url\(["']?https?:/);
+    expect(css).not.toMatch(/font-weight:\s*(?:[1589]00|[1-9]50)/);
   });
 });

@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Account | Game Portal";
+const description =
+  "Account will offer optional adult-oriented access to saved information and privacy controls. Authentication is forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="Optional account"
+    heading="Account"
+    purpose="Accounts will remain optional and adult-oriented while core discovery stays available to guests."
+    forthcoming="Authentication, recovery, export, deletion, and account data are reserved for a later milestone."
+  />
+</BaseLayout>
