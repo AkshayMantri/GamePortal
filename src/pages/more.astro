@@ -1,0 +1,20 @@
+---
+import MoreLinks from "../components/MoreLinks.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "More | Game Portal";
+const description =
+  "Open Vote, Game Night, Popular, Library, and Account from the compact Game Portal navigation.";
+---
+
+<BaseLayout {title} {description}>
+  <article class="route-scaffold">
+    <p class="eyebrow">More destinations</p>
+    <h1>More</h1>
+    <p class="route-scaffold__purpose">
+      These links keep every primary destination available in the compact static
+      navigation. Their functional slices are not yet implemented.
+    </p>
+    <MoreLinks pathname={Astro.url.pathname} />
+  </article>
+</BaseLayout>

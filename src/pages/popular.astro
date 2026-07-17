@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Popular | Game Portal";
+const description =
+  "Popular will describe recent activity inside Game Portal with visible signal counts. Activity data is forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="Recent portal activity"
+    heading="Popular"
+    purpose="Popular will describe recent activity inside Game Portal and disclose the signal behind every item."
+    forthcoming="Activity collection, aggregation, sample counts, and ranking are reserved for the Popular slice."
+  />
+</BaseLayout>

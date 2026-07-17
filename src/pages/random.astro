@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Random | Game Portal";
+const description =
+  "Random will draw uniformly from games that meet a group's active constraints. Drawing behavior is forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="A fair draw"
+    heading="Random"
+    purpose="Random will choose uniformly from unique games that satisfy the same eligibility rules as Find."
+    forthcoming="Eligibility, draw history, and no-repeat behavior are reserved for the Random feature slice."
+  />
+</BaseLayout>

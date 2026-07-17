@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Vote | Game Portal";
+const description =
+  "Vote will help groups reach a transparent ranked consensus. Voting sessions and ballots are forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="Decide together"
+    heading="Vote"
+    purpose="Vote will give groups a transparent way to rank choices and reach a consensus."
+    forthcoming="Candidate setup, ballots, scoring, and results are reserved for the Group Vote slice."
+  />
+</BaseLayout>

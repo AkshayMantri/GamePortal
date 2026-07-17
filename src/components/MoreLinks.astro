@@ -1,0 +1,26 @@
+---
+import { getMoreNavigationItems, isCurrentRoute } from "../navigation/routes";
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const items = getMoreNavigationItems();
+---
+
+<ul class="more-links">
+  {
+    items.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          aria-current={isCurrentRoute(item, pathname) ? "page" : undefined}
+        >
+          <span>{item.label}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

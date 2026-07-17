@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import { PUBLIC_APP_ENV } from "astro:env/client";
+import DesktopNavigation from "../components/DesktopNavigation.astro";
+import MobileNavigation from "../components/MobileNavigation.astro";
 
 interface Props {
   title: string;
@@ -8,6 +10,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -16,6 +19,7 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta name="robots" content="noindex,follow" />
     <meta name="app-environment" content={PUBLIC_APP_ENV} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -25,15 +29,18 @@ const { title, description } = Astro.props;
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
       <div class="site-header__inner">
-        <span class="site-mark" aria-hidden="true">GP</span>
-        <span class="site-name">Game Portal</span>
+        <a class="site-name" href="/" aria-label="Game Portal, Find">
+          <span>Game Portal</span>
+        </a>
+        <DesktopNavigation {pathname} />
       </div>
     </header>
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
       <p>Game Portal is strictly non-commercial.</p>
     </footer>
+    <MobileNavigation {pathname} />
   </body>
 </html>

@@ -1,0 +1,17 @@
+---
+import RouteScaffold from "../components/RouteScaffold.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Game Night | Game Portal";
+const description =
+  "Game Night will support bounded remote and public-venue gatherings. Event features are forthcoming.";
+---
+
+<BaseLayout {title} {description}>
+  <RouteScaffold
+    eyebrow="Gather to play"
+    heading="Game Night"
+    purpose="Game Night will support remote sessions and in-person gatherings at public venues."
+    forthcoming="Event discovery, creation, joining, capacity, and safety controls are reserved for a later milestone."
+  />
+</BaseLayout>

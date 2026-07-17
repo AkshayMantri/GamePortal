@@ -1,0 +1,21 @@
+---
+interface Props {
+  eyebrow: string;
+  heading: string;
+  purpose: string;
+  forthcoming: string;
+}
+
+const { eyebrow, heading, purpose, forthcoming } = Astro.props;
+---
+
+<article class="route-scaffold">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{heading}</h1>
+  <p class="route-scaffold__purpose">{purpose}</p>
+  <div class="editorial-rule" aria-hidden="true"></div>
+  <p class="route-scaffold__status">
+    <strong>Not yet available.</strong>
+    {forthcoming}
+  </p>
+</article>

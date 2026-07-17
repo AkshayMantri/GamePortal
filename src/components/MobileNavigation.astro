@@ -1,0 +1,28 @@
+---
+import { getNavigationProjection, isCurrentRoute } from "../navigation/routes";
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const items = getNavigationProjection("mobile-primary");
+---
+
+<nav class="mobile-navigation" aria-label="Primary">
+  <ul class="mobile-navigation__list">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            class="mobile-navigation__link"
+            href={item.href}
+            aria-current={isCurrentRoute(item, pathname) ? "page" : undefined}
+          >
+            <span>{item.label}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
