@@ -93,6 +93,7 @@ The explicit implementation authorization accepted the authorized bootstrap defa
 | I-009 | Publish only two bootstrap proof records, Chess and Go, and leave the other 18 candidate slots unrepresented | Primary FIDE/BGA sources, original summaries, explicit unknown age/time, and local neutral media prove the full catalog contract without fabricating the target seed slate |
 | I-010 | Use a binding-only local D1 database for append-only link observations and a current-status projection | Installed Wrangler 4.111 accepts a binding without a remote ID; all commands require `--local`, and no account, vote, event, or analytics tables are introduced speculatively |
 | I-011 | Treat `PACKAGE_MANIFEST.json` and `SHA256SUMS.txt` as a scoped repository authority snapshot | The original archive manifest became stale after authorized decision updates and the AGENTS.md checksum waiver; the repository now verifies the current authority files deterministically without pretending to inventory application code |
+| I-012 | Use self-hosted Fraunces 72pt Regular/SemiBold for display text and Source Sans 3 Regular/Semibold/Bold for body and interface text | Resolves R-007 and the exact-font checklist for the English-first release. Both upstream releases use SIL OFL 1.1; five static WOFF2 files keep weights explicit, avoid synthetic styles and runtime font requests, use `font-display: swap`, and retain system fallbacks. Retrieval provenance, hashes, coverage evidence, and the corrected Fraunces release-tree path are recorded in `docs/ui/SHELL_AND_NAVIGATION.md`. |
 
 # Blocked / launch gates
 
@@ -126,7 +127,7 @@ The model-routing and role-separation policy in `AGENTS.md` is confirmed. Before
 - [x] `pnpm` package manager — accepted for bootstrap as I-001.
 - [ ] Passkey + recovery-code account design.
 - [x] Catalog file format — version-controlled JSON plus Zod, accepted for bootstrap as I-004.
-- [ ] Exact initial font pair after language/license test.
+- [x] Exact initial font pair â€” Fraunces + Source Sans 3, accepted for the shell as I-012.
 - [ ] Analytics retention of 30 days.
 - [ ] Public-event legal review path.
 - [ ] BoardGameGeek use or no-use decision after authorization request.

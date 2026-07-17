@@ -4,7 +4,7 @@ Game Portal is a strictly non-commercial, guest-first web application for browsi
 
 ## Repository status
 
-The repository is in its independently verified bootstrap phase. The application foundation targets static-first Astro, narrowly scoped React islands, Cloudflare Workers with static assets, and local D1 development. No production deployment or remote Cloudflare resource is part of this bootstrap.
+The independently verified bootstrap is complete. Milestone 2A establishes the static Table Notes application shell, typed route ownership, responsive desktop and compact navigation, and honest noindex route scaffolds. Feature behavior beyond the shell remains deliberately unimplemented. No production deployment or remote Cloudflare resource is part of this milestone.
 
 ## Local setup
 
@@ -19,6 +19,8 @@ corepack pnpm install --frozen-lockfile
 The local commands do not log in to Cloudflare, provision resources, deploy, or require secrets.
 
 The reviewed catalog proof set and the remaining verification work are recorded in [Catalog seed status](docs/catalog/SEED_STATUS.md). Local D1 setup is documented in [Local D1 link-health baseline](docs/d1-local.md).
+
+The shell, navigation, breakpoint, temporary-scaffold, and self-hosted font contracts are documented in [Shell and navigation](docs/ui/SHELL_AND_NAVIGATION.md). The current gated task evidence is recorded in the [Milestone 2A ledger](docs/delivery/MILESTONE_2A_LEDGER.md).
 
 ## Development and verification
 
@@ -37,7 +39,7 @@ corepack pnpm verify
 
 `integrity:check` verifies the scoped authority-document manifest and SHA-256 list. `catalog:validate` applies the same fail-closed publication, provenance, and hierarchy contract used by the build. `test:d1:local` creates disposable OS-temp D1 state, applies the migration locally, and exercises the data constraints without a Cloudflare account.
 
-`test:browser` builds the static site and starts the local Astro preview for bounded Chromium checks at 390px and 1440px. Install that browser once with `corepack pnpm exec playwright install chromium` if it is not already present. `verify` runs formatting, linting, Astro/type checks, integrity, unit and local-D1 checks, a static build, and browser/accessibility checks. Use `corepack pnpm format` to apply formatting intentionally.
+`test:browser` builds the static site and starts the local Astro preview for bounded Chromium checks. The configured 390px and 1440px projects also exercise targeted 320px, 768px, and 1024px shell viewports without multiplying every browser test. Install Chromium once with `corepack pnpm exec playwright install chromium` if it is not already present. `verify` runs formatting, linting, Astro/type checks, integrity, unit and local-D1 checks, a static build, and browser/accessibility checks. Use `corepack pnpm format` to apply formatting intentionally.
 
 The Cloudflare Vitest Workers pool is intentionally not installed yet: this static-only foundation has no Worker entry point or Worker test. Add the pool only with the first authorized Worker test so the dependency is exercised rather than carried unused.
 

@@ -1,10 +1,10 @@
 {
   "package": "GamePortal-bootstrap-authority",
-  "package_version": 5,
+  "package_version": 6,
   "source_archive_name": "GamePortal-planning-v4-agents.zip",
   "generated_at": "2026-07-17",
   "repository_target": "https://github.com/AkshayMantri/GamePortal.git",
-  "status": "bootstrap-authority-snapshot",
+  "status": "milestone-2a-authority-snapshot",
   "manifest_scope": "Current root planning and agent-orchestration documents listed in files; application source, tests, generated output, and dependencies are intentionally outside this manifest.",
   "repository_contains_production_code": true,
   "integrity_note": "The product owner explicitly waived the source archive's AGENTS.md checksum mismatch. This snapshot records the authorized repository AGENTS.md and subsequent approved decision-log updates.",
@@ -69,8 +69,8 @@
     },
     {
       "name": "DECISION_LOG.md",
-      "bytes": 12780,
-      "sha256": "c49258d426f28dfcf8b7965b877dcd38b2b7965ea1c3811c8d48f870b68809e2"
+      "bytes": 13377,
+      "sha256": "cf6b5167788fb1d2cb67fe58ef765118911bf1a8fb8a05ebaa3f52b43a0a6f58"
     },
     {
       "name": "GAME_TAXONOMY.md",
@@ -89,8 +89,8 @@
     },
     {
       "name": "PLANNING_INDEX.md",
-      "bytes": 6664,
-      "sha256": "b7348afca4383d65051c462068429240db897b2a656b4863af4f040011549d5c"
+      "bytes": 6712,
+      "sha256": "e13c37c71033a8589232f8bf0d5cd328bf15bbc0c1576734ec1a7cc913df78f8"
     },
     {
       "name": "PRODUCT.md",
