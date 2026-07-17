@@ -1,0 +1,69 @@
+---
+import type { BrowseGame } from "../catalog/browse.ts";
+import "../styles/browse.css";
+
+interface Props {
+  game: BrowseGame;
+}
+
+const { game } = Astro.props;
+---
+
+<article class="game-route">
+  <header class="game-route__header">
+    <p class="eyebrow">Published game overview</p>
+    <h1>{game.title}</h1>
+    <p class="game-route__type">{game.typeLabel}</p>
+  </header>
+
+  {
+    game.media ? (
+      <img
+        class="game-route__image"
+        src={game.media.path}
+        alt={game.media.altText}
+        width={game.media.width}
+        height={game.media.height}
+        decoding="async"
+      />
+    ) : null
+  }
+
+  <section class="game-route__section" aria-labelledby="about-heading">
+    <h2 id="about-heading">About {game.title}</h2>
+    <p>{game.summary}</p>
+  </section>
+
+  <section class="game-route__section" aria-labelledby="play-overview-heading">
+    <h2 id="play-overview-heading">Published play overview</h2>
+    <dl class="game-route__facts">
+      <div>
+        <dt>Players</dt>
+        <dd>{game.playersSummary}</dd>
+      </div>
+      <div>
+        <dt>Time</dt>
+        <dd>{game.timeSummary}</dd>
+      </div>
+      <div>
+        <dt>Age guidance</dt>
+        <dd>{game.ageSummary}</dd>
+      </div>
+      <div>
+        <dt>Play mode</dt>
+        <dd>{game.modesSummary}</dd>
+      </div>
+      <div>
+        <dt>Known playable forms</dt>
+        <dd>{game.formsSummary}</dd>
+      </div>
+    </dl>
+    <p class="game-route__note">
+      Playable forms describe reviewed catalog records, not current external
+      availability. Detailed Edition, Play Mode, Access Option, and destination
+      choices will be added in a later authorized Game Page milestone.
+    </p>
+  </section>
+
+  <a class="game-route__return" href="/browse">← Return to Browse</a>
+</article>

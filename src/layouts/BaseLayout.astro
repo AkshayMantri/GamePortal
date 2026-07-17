@@ -7,9 +7,16 @@ import MobileNavigation from "../components/MobileNavigation.astro";
 interface Props {
   title: string;
   description: string;
+  robots?: "index,follow" | "noindex,follow";
+  canonicalPath?: `/${string}`;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  robots = "noindex,follow",
+  canonicalPath,
+} = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
@@ -19,10 +26,11 @@ const pathname = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex,follow" />
+    <meta name="robots" content={robots} />
     <meta name="app-environment" content={PUBLIC_APP_ENV} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonicalPath ? <link rel="canonical" href={canonicalPath} /> : null}
     <title>{title}</title>
   </head>
   <body>

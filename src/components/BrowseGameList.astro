@@ -1,0 +1,21 @@
+---
+import type { BrowseGame } from "../catalog/browse.ts";
+import BrowseGameCard from "./BrowseGameCard.astro";
+
+interface Props {
+  games: BrowseGame[];
+  id?: string;
+}
+
+const { games, id } = Astro.props;
+---
+
+<ul class="browse-grid" {id} data-browse-list>
+  {
+    games.map((game) => (
+      <li data-browse-game data-search={game.searchText}>
+        <BrowseGameCard {game} />
+      </li>
+    ))
+  }
+</ul>

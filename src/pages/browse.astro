@@ -1,17 +1,13 @@
 ---
-import RouteScaffold from "../components/RouteScaffold.astro";
+import { browseCollection } from "../catalog/browse-loader.ts";
+import BrowseCollection from "../components/BrowseCollection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Browse | Game Portal";
 const description =
-  "Browse the curated Game Portal collection without choosing party size first. Collection content is forthcoming.";
+  "Browse every published Game Portal game by type or alphabetically without choosing party size first.";
 ---
 
-<BaseLayout {title} {description}>
-  <RouteScaffold
-    eyebrow="Explore the collection"
-    heading="Browse"
-    purpose="Browse will offer a collection-first path for exploring games without setting party size."
-    forthcoming="Collection indexes, categories, search, and game summaries belong to the next authorized slice."
-  />
+<BaseLayout {title} {description} robots="index,follow" canonicalPath="/browse">
+  <BrowseCollection collection={browseCollection} />
 </BaseLayout>

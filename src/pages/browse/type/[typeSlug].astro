@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths } from "astro";
+import { browseCollection } from "../../../catalog/browse-loader.ts";
+import type { BrowseTypeGroup } from "../../../catalog/browse.ts";
+import BrowseGameList from "../../../components/BrowseGameList.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import "../../../styles/browse.css";
+
+export const getStaticPaths = (() =>
+  browseCollection.types.map((type) => ({
+    params: { typeSlug: type.slug },
+    props: { type },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  type: BrowseTypeGroup;
+}
+
+const { type } = Astro.props as Props;
+const title = `${type.label} games | Game Portal`;
+const description = `Browse ${type.count} published ${type.label.toLocaleLowerCase("en-US")} ${
+  type.count === 1 ? "game" : "games"
+} in the Game Portal collection.`;
+const canonicalPath = `/browse/type/${type.slug}` as const;
+---
+
+<BaseLayout {title} {description} {canonicalPath}>
+  <article class="browse-type-page">
+    <header class="browse-type-page__header">
+      <p class="eyebrow">Browse by type</p>
+      <h1>{type.label} games</h1>
+      <p class="browse-type-page__purpose">
+        {type.count} published {type.count === 1 ? "game" : "games"}, ordered
+        alphabetically.
+      </p>
+      <a class="browse-type-page__return" href="/browse">← Return to Browse</a>
+    </header>
+    <section
+      class="browse-type-page__games"
+      aria-labelledby="type-games-heading"
+    >
+      <h2 id="type-games-heading">Games</h2>
+      <BrowseGameList games={type.games} />
+    </section>
+  </article>
+</BaseLayout>
