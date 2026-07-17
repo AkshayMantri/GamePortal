@@ -80,21 +80,30 @@ test("renders a semantic static shell without overflow or external assets", asyn
   expect(externalFontOrMedia).toEqual([]);
 });
 
-test("emits no JavaScript assets, script references, or Astro islands", async () => {
+test("keeps the bounded Browse enhancement inline and all other pages script-free", async () => {
   const distRoot = resolve(process.cwd(), "dist");
   const files = await listFiles(distRoot);
   const javascriptAssets = files.filter((path) => /\.(?:c|m)?js$/i.test(path));
   expect(javascriptAssets).toEqual([]);
 
   const htmlFiles = files.filter((path) => path.endsWith(".html"));
-  expect(htmlFiles).toHaveLength(10);
+  expect(htmlFiles).toHaveLength(13);
   const htmlDocuments = await Promise.all(
-    htmlFiles.map((path) => readFile(path, "utf8")),
+    htmlFiles.map(async (path) => ({
+      path,
+      html: await readFile(path, "utf8"),
+    })),
   );
-  for (const html of htmlDocuments) {
-    expect(html).not.toMatch(/<script\b/i);
+  const scriptedPages = htmlDocuments
+    .filter(({ html }) => /<script\b/i.test(html))
+    .map(({ path }) => path.replaceAll("\\", "/"));
+  expect(scriptedPages).toEqual([
+    resolve(process.cwd(), "dist/browse/index.html").replaceAll("\\", "/"),
+  ]);
+  for (const { html } of htmlDocuments) {
     expect(html).not.toMatch(/<astro-island\b/i);
     expect(html).not.toMatch(/\/_astro\/[^"']+\.(?:c|m)?js\b/i);
+    expect(html).not.toMatch(/react(?:-dom)?|__REACT/i);
   }
 });
 

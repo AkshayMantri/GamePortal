@@ -2,7 +2,6 @@ import { expect, test } from "@playwright/test";
 
 const routes = [
   { path: "/find", title: "Find | Game Portal", heading: "Find" },
-  { path: "/browse", title: "Browse | Game Portal", heading: "Browse" },
   { path: "/random", title: "Random | Game Portal", heading: "Random" },
   { path: "/vote", title: "Vote | Game Portal", heading: "Vote" },
   {
@@ -16,7 +15,7 @@ const routes = [
   { path: "/more", title: "More | Game Portal", heading: "More" },
 ] as const;
 
-test("every scaffold resolves with honest metadata and no fake feature controls", async ({
+test("every remaining scaffold resolves with honest metadata and no fake feature controls", async ({
   page,
 }) => {
   for (const route of routes) {
