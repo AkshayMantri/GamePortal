@@ -4,7 +4,7 @@ Game Portal is a strictly non-commercial, guest-first web application for browsi
 
 ## Repository status
 
-The independently verified bootstrap and Milestone 2A shell are complete. The Milestone 2B candidate adds a fully static, publication-safe Browse collection, represented type navigation, progressive local search, and neutral generated Game route scaffolds for the two reviewed proof records. Milestone 2B still requires independent task verification, integrated regression, and Git delivery before it is complete. No production deployment or remote Cloudflare resource is part of this milestone.
+The independently verified bootstrap and Milestone 2A shell are complete. The locally committed and independently regression-verified Milestone 2B candidate adds a fully static, publication-safe Browse collection, represented type navigation, progressive local search, and neutral generated Game route scaffolds for the two reviewed proof records. Remote draft-PR delivery and hosted CI remain before Milestone 2B delivery is complete. No production deployment or remote Cloudflare resource is part of this milestone.
 
 ## Local setup
 
