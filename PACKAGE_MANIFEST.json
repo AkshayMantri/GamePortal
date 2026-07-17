@@ -1,0 +1,124 @@
+{
+  "package": "GamePortal-planning-v4",
+  "package_version": 4,
+  "archive_name": "GamePortal-planning-v4-agents.zip",
+  "generated_at": "2026-07-17",
+  "repository_target": "https://github.com/AkshayMantri/GamePortal.git",
+  "status": "planning-and-agent-orchestration-only",
+  "production_code_included": false,
+  "orchestration": {
+    "orchestrator": {
+      "model": "GPT5.6-Sol",
+      "reasoning": "High"
+    },
+    "planning": {
+      "model": "Sol",
+      "reasoning": "High"
+    },
+    "implementation_allowlist": [
+      "Luna XHigh",
+      "Terra High",
+      "Terra XHigh",
+      "Sol Medium",
+      "Sol High"
+    ],
+    "formal_tester": {
+      "model": "Luna",
+      "reasoning": "XHigh",
+      "fresh_context_required": true,
+      "sol_high_test_charter_required": true,
+      "task_level_verification": true,
+      "integrated_candidate_regression": true
+    },
+    "git_steward": {
+      "model": "Luna",
+      "reasoning": "XHigh",
+      "exclusive_for_all_git_and_github_actions": true,
+      "separate_context_from_tester": true
+    },
+    "default_max_parallel_implementers": 3,
+    "silent_substitution_allowed": false
+  },
+  "changed_or_added_for_orchestration": [
+    "AGENTS.md",
+    "PLANNING_INDEX.md",
+    "ARCHITECTURE.md",
+    "MVP_BACKLOG.md",
+    "DECISION_LOG.md",
+    "ITERATION_LOG.md",
+    "PACKAGE_MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "files": [
+    {
+      "name": "AGENTS.md",
+      "bytes": 30221,
+      "sha256": "6f4617f0ebe79f40315f8578e620cd60c18caab4a30272a779b55b823ddb0d45"
+    },
+    {
+      "name": "ARCHITECTURE.md",
+      "bytes": 18102,
+      "sha256": "c88fe2c93422b4b9691b9b7002652b7b388506ecd3c35128f8e239de392f56f9"
+    },
+    {
+      "name": "DATA_MODEL.md",
+      "bytes": 11256,
+      "sha256": "65a6560541fb50ab0eef89cc8ed3c3bb64105c2799a70098fcb1821817a799f5"
+    },
+    {
+      "name": "DECISION_LOG.md",
+      "bytes": 9860,
+      "sha256": "f83987e2a67ab8a1bc4e1781d33308c97a37e58a2046c87059ba795a87b229c4"
+    },
+    {
+      "name": "GAME_TAXONOMY.md",
+      "bytes": 11625,
+      "sha256": "ea13be91ffcc9ab4399819178adf8b80c10f1fe2bdda7e42fcc8663fbbb3b691"
+    },
+    {
+      "name": "ITERATION_LOG.md",
+      "bytes": 5478,
+      "sha256": "6cc564084b4bb5d08bf7b3382700a336dd14da8b7e04be72fb059f030e7212ba"
+    },
+    {
+      "name": "MVP_BACKLOG.md",
+      "bytes": 12772,
+      "sha256": "eefe9b35672a12b9c7ebe6591fde9d7189ab62e51726dfef14fd03141cbe767e"
+    },
+    {
+      "name": "PLANNING_INDEX.md",
+      "bytes": 6501,
+      "sha256": "73adffca104d09610f3112d256b930b677929d8d11bb0c03b1ec9a233a1aea90"
+    },
+    {
+      "name": "PRODUCT.md",
+      "bytes": 10840,
+      "sha256": "918e328e064d8f299e6090395bc495fd07c2bf66821a0f6c8bb119c4d9ee9672"
+    },
+    {
+      "name": "REQUIREMENTS.md",
+      "bytes": 14532,
+      "sha256": "a824731e0e720267b50af6103705bf51ec5fb11f4631ab174f77f2494d724bfb"
+    },
+    {
+      "name": "SAFETY_AND_PRIVACY.md",
+      "bytes": 11179,
+      "sha256": "3bbf837ef3b95e67d74e590dd18a5a343db7ef88eca421b907138bc58b0b4d6a"
+    },
+    {
+      "name": "UI_DIRECTION.md",
+      "bytes": 7190,
+      "sha256": "e6f6213e7975a58ab05656e2fedee692afd5521fd19f332c9e7539a3447ed66f"
+    },
+    {
+      "name": "UI_SPEC.md",
+      "bytes": 9906,
+      "sha256": "98d6df80fce512d099dca04c785721c6cf2ec65b2c113260a43ea29b2ace6e4d"
+    },
+    {
+      "name": "UX_FLOWS.md",
+      "bytes": 10324,
+      "sha256": "9fc9a6ef7d6daf5fd08d5ead76437ff0b7d87b4d7cc0304ad18d4259b1964af3"
+    }
+  ]
+}
