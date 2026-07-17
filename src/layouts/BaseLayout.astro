@@ -1,0 +1,39 @@
+---
+import "../styles/global.css";
+import { PUBLIC_APP_ENV } from "astro:env/client";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="app-environment" content={PUBLIC_APP_ENV} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <span class="site-mark" aria-hidden="true">GP</span>
+        <span class="site-name">Game Portal</span>
+      </div>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>Game Portal is strictly non-commercial.</p>
+    </footer>
+  </body>
+</html>

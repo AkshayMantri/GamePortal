@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - name: Enable the pinned package manager
+        run: |
+          corepack enable
+          corepack install
+
+      - name: Install dependencies from the lockfile
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Install Chromium for browser checks
+        run: corepack pnpm exec playwright install --with-deps chromium
+
+      - name: Run deterministic verification
+        run: corepack pnpm verify:ci

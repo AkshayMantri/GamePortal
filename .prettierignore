@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+PACKAGE_MANIFEST.json
+SHA256SUMS.txt
+docs/delivery/BOOTSTRAP_LEDGER.md
+
+# The approved planning package remains byte-for-byte authority until its
+# dedicated documentation/integrity task refreshes the package checksums.
+/AGENTS.md
+/ARCHITECTURE.md
+/DATA_MODEL.md
+/DECISION_LOG.md
+/GAME_TAXONOMY.md
+/ITERATION_LOG.md
+/MVP_BACKLOG.md
+/PLANNING_INDEX.md
+/PRODUCT.md
+/REQUIREMENTS.md
+/SAFETY_AND_PRIVACY.md
+/UI_DIRECTION.md
+/UI_SPEC.md
+/UX_FLOWS.md

@@ -1,0 +1,674 @@
+{
+  "catalogVersion": 1,
+  "contentState": { "kind": "populated" },
+  "games": [
+    {
+      "id": "game_chess",
+      "slug": "chess",
+      "canonicalTitle": "Chess",
+      "sortTitle": "Chess",
+      "gameType": "abstract_strategy",
+      "summary": "Two opponents take turns moving contrasting armies across a square board, each trying to end the contest by trapping the opposing king under an inescapable attack.",
+      "tags": ["abstract_strategy", "in_person"],
+      "editionIds": ["edition_chess_traditional"],
+      "mediaAssetIds": ["media_chess_placeholder"],
+      "rulesItemIds": ["rules_chess_fide"],
+      "contentUpdatedAt": "2026-07-17T12:00:00+05:30",
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "canonicalTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "sortTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "gameType", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "summary",
+          "basis": {
+            "kind": "source_claim",
+            "claimId": "claim_chess_summary"
+          }
+        },
+        { "fieldPath": "tags", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "game_go",
+      "slug": "go",
+      "canonicalTitle": "Go",
+      "sortTitle": "Go",
+      "gameType": "abstract_strategy",
+      "summary": "Players alternate placing stones on an empty board, seeking to surround open areas and opposing stones.",
+      "tags": ["abstract_strategy", "in_person"],
+      "editionIds": ["edition_go_traditional_bga"],
+      "mediaAssetIds": ["media_go_placeholder"],
+      "rulesItemIds": ["rules_go_bga"],
+      "contentUpdatedAt": "2026-07-17T12:00:00+05:30",
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "canonicalTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "sortTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "gameType", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "summary",
+          "basis": { "kind": "source_claim", "claimId": "claim_go_summary" }
+        },
+        { "fieldPath": "tags", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "editions": [
+    {
+      "id": "edition_chess_traditional",
+      "gameId": "game_chess",
+      "title": "Traditional chess — FIDE over-the-board reference",
+      "variantKind": "traditional",
+      "publisherOrTradition": {
+        "state": "known",
+        "value": "FIDE Laws of Chess (2023)"
+      },
+      "ageGuidance": {
+        "state": "unknown",
+        "reason": "not_verified",
+        "note": "No precise age guidance has been approved for this catalog variant."
+      },
+      "languages": { "state": "known", "tags": ["en"] },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "playModeIds": ["mode_chess_in_person"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "title", "basis": { "kind": "original" } },
+        { "fieldPath": "variantKind", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "publisherOrTradition",
+          "basis": {
+            "kind": "source_claim",
+            "claimId": "claim_chess_rules_reference"
+          }
+        },
+        { "fieldPath": "ageGuidance", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "edition_go_traditional_bga",
+      "gameId": "game_go",
+      "title": "Traditional Go — BGA rules reference",
+      "variantKind": "traditional",
+      "publisherOrTradition": {
+        "state": "known",
+        "value": "British Go Association default rules reference"
+      },
+      "ageGuidance": {
+        "state": "unknown",
+        "reason": "not_verified",
+        "note": "No precise age guidance has been approved for this catalog variant."
+      },
+      "languages": { "state": "known", "tags": ["en"] },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "playModeIds": ["mode_go_in_person"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "title", "basis": { "kind": "original" } },
+        { "fieldPath": "variantKind", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "publisherOrTradition",
+          "basis": {
+            "kind": "source_claim",
+            "claimId": "claim_go_rules_reference"
+          }
+        },
+        { "fieldPath": "ageGuidance", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "playModes": [
+    {
+      "id": "mode_chess_in_person",
+      "editionId": "edition_chess_traditional",
+      "mode": "in_person",
+      "synchrony": "synchronous",
+      "supportedPlayers": {
+        "state": "known",
+        "shape": { "kind": "set", "values": [2] }
+      },
+      "time": {
+        "setupOrAccess": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Setup time has not been verified for this catalog variant."
+        },
+        "teaching": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Teaching time has not been verified for this catalog variant."
+        },
+        "play": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Play time has not been verified for this catalog variant."
+        }
+      },
+      "teamStructure": { "state": "unknown", "reason": "not_applicable" },
+      "accessOptionIds": ["access_chess_physical"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "mode", "basis": { "kind": "original" } },
+        { "fieldPath": "synchrony", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "supportedPlayers",
+          "basis": {
+            "kind": "source_claim",
+            "claimId": "claim_chess_players"
+          }
+        },
+        { "fieldPath": "time", "basis": { "kind": "original" } },
+        { "fieldPath": "teamStructure", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "mode_go_in_person",
+      "editionId": "edition_go_traditional_bga",
+      "mode": "in_person",
+      "synchrony": "synchronous",
+      "supportedPlayers": {
+        "state": "known",
+        "shape": { "kind": "set", "values": [2] }
+      },
+      "time": {
+        "setupOrAccess": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Setup time has not been verified for this catalog variant."
+        },
+        "teaching": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Teaching time has not been verified for this catalog variant."
+        },
+        "play": {
+          "state": "unknown",
+          "reason": "not_verified",
+          "note": "Play time has not been verified for this catalog variant."
+        }
+      },
+      "teamStructure": { "state": "unknown", "reason": "not_applicable" },
+      "accessOptionIds": ["access_go_physical"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "mode", "basis": { "kind": "original" } },
+        { "fieldPath": "synchrony", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "supportedPlayers",
+          "basis": { "kind": "source_claim", "claimId": "claim_go_players" }
+        },
+        { "fieldPath": "time", "basis": { "kind": "original" } },
+        { "fieldPath": "teamStructure", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "accessOptions": [
+    {
+      "id": "access_chess_physical",
+      "playModeId": "mode_chess_in_person",
+      "accessKind": "physical_instructions",
+      "playable": true,
+      "provider": { "state": "known", "value": "Self-provided materials" },
+      "accountRequirement": { "state": "known", "value": "none" },
+      "installationRequirement": { "state": "known", "value": "none" },
+      "priceClassification": { "state": "known", "value": "physical_owned" },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "languages": { "state": "known", "tags": ["en"] },
+      "requirementIds": ["req_chess_set"],
+      "destination": { "state": "none", "reason": "not_required" },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "accessKind", "basis": { "kind": "original" } },
+        { "fieldPath": "playable", "basis": { "kind": "original" } },
+        { "fieldPath": "provider", "basis": { "kind": "original" } },
+        { "fieldPath": "accountRequirement", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "installationRequirement",
+          "basis": { "kind": "original" }
+        },
+        {
+          "fieldPath": "priceClassification",
+          "basis": { "kind": "original" }
+        },
+        { "fieldPath": "regions", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "destination", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "access_go_physical",
+      "playModeId": "mode_go_in_person",
+      "accessKind": "physical_instructions",
+      "playable": true,
+      "provider": { "state": "known", "value": "Self-provided materials" },
+      "accountRequirement": { "state": "known", "value": "none" },
+      "installationRequirement": { "state": "known", "value": "none" },
+      "priceClassification": { "state": "known", "value": "physical_owned" },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "languages": { "state": "known", "tags": ["en"] },
+      "requirementIds": ["req_go_set"],
+      "destination": { "state": "none", "reason": "not_required" },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "accessKind", "basis": { "kind": "original" } },
+        { "fieldPath": "playable", "basis": { "kind": "original" } },
+        { "fieldPath": "provider", "basis": { "kind": "original" } },
+        { "fieldPath": "accountRequirement", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "installationRequirement",
+          "basis": { "kind": "original" }
+        },
+        {
+          "fieldPath": "priceClassification",
+          "basis": { "kind": "original" }
+        },
+        { "fieldPath": "regions", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "destination", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req_chess_set",
+      "accessOptionId": "access_chess_physical",
+      "requirementType": "equipment",
+      "itemCode": "chess_set",
+      "minimumQuantity": 1,
+      "scope": "per_group",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "itemCode",
+          "basis": {
+            "kind": "source_claim",
+            "claimId": "claim_chess_equipment"
+          }
+        },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "req_go_set",
+      "accessOptionId": "access_go_physical",
+      "requirementType": "equipment",
+      "itemCode": "go_set",
+      "minimumQuantity": 1,
+      "scope": "per_group",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "itemCode",
+          "basis": { "kind": "source_claim", "claimId": "claim_go_equipment" }
+        },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "destinations": [],
+  "sourceClaims": [
+    {
+      "id": "claim_chess_summary",
+      "target": {
+        "entityType": "game",
+        "entityId": "game_chess",
+        "fieldPath": "summary"
+      },
+      "sourceName": "FIDE Laws of Chess effective 2023",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://handbook.fide.com/chapter/E012023",
+      "sourceLocator": "Basic Rules of Play, Articles 1.1–1.5 and 2.1–2.2",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only factual verification; the catalog wording is original and no rules text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "FIDE Laws of Chess (effective 1 January 2023)",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck the cited FIDE articles and revise or unpublish the claim if the source changes.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_chess_rules_reference",
+      "target": {
+        "entityType": "edition",
+        "entityId": "edition_chess_traditional",
+        "fieldPath": "publisherOrTradition"
+      },
+      "sourceName": "FIDE Laws of Chess effective 2023",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://handbook.fide.com/chapter/E012023",
+      "sourceLocator": "Document heading, approval/effective-date notice, and Introduction 0.1",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only identification of the rules document; no source text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "FIDE Laws of Chess (effective 1 January 2023)",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck the FIDE handbook entry and revise this edition reference if it is superseded.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_chess_players",
+      "target": {
+        "entityType": "playMode",
+        "entityId": "mode_chess_in_person",
+        "fieldPath": "supportedPlayers"
+      },
+      "sourceName": "FIDE Laws of Chess effective 2023",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://handbook.fide.com/chapter/E012023",
+      "sourceLocator": "Basic Rules of Play, Article 1.1",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only verification of the two-opponent player count; no source text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "FIDE Laws of Chess (effective 1 January 2023)",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck FIDE Article 1.1 and unpublish the play mode if the count cannot be supported.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_chess_equipment",
+      "target": {
+        "entityType": "requirement",
+        "entityId": "req_chess_set",
+        "fieldPath": "itemCode"
+      },
+      "sourceName": "FIDE Laws of Chess effective 2023",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://handbook.fide.com/chapter/E012023",
+      "sourceLocator": "Basic Rules of Play, Articles 2.1–2.2",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only verification that over-the-board play uses a chessboard and the two sets of pieces; no source text or imagery is copied.",
+      "attributionDuty": "required",
+      "attributionText": "FIDE Laws of Chess (effective 1 January 2023)",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck FIDE Articles 2.1–2.2 and revise the equipment mapping if needed.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_chess_rules_rights",
+      "target": {
+        "entityType": "rulesItem",
+        "entityId": "rules_chess_fide",
+        "fieldPath": "rights"
+      },
+      "sourceName": "FIDE Laws of Chess effective 2023",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://handbook.fide.com/chapter/E012023",
+      "sourceLocator": "FIDE Handbook page containing the Laws of Chess",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only link to the FIDE-hosted page; Game Portal does not reproduce or embed the rules.",
+      "attributionDuty": "required",
+      "attributionText": "FIDE Laws of Chess (effective 1 January 2023)",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Remove or replace the reference if FIDE withdraws the page or changes its access terms.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_go_summary",
+      "target": {
+        "entityType": "game",
+        "entityId": "game_go",
+        "fieldPath": "summary"
+      },
+      "sourceName": "British Go Association — How to Play Go",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://www.britgo.org/howtoplaygo",
+      "sourceLocator": "Introductory paragraph under ‘How to Play Go’",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only factual verification; the catalog wording is original and no instructional text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "British Go Association, How to Play Go",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck the cited BGA introduction and revise or unpublish the claim if it changes.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_go_rules_reference",
+      "target": {
+        "entityType": "edition",
+        "entityId": "edition_go_traditional_bga",
+        "fieldPath": "publisherOrTradition"
+      },
+      "sourceName": "British Go Association — Default Rules",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://www.britgo.org/rules/approved",
+      "sourceLocator": "Default Rules introduction and linked Rules of Play",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only identification of the BGA default rules; no source text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "British Go Association, Default Rules",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck the BGA default-rules page and revise the scoped edition if it is superseded.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_go_players",
+      "target": {
+        "entityType": "playMode",
+        "entityId": "mode_go_in_person",
+        "fieldPath": "supportedPlayers"
+      },
+      "sourceName": "British Go Association — Rules of Play",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://www.britgo.org/files/rules/rulesofplay.pdf",
+      "sourceLocator": "Page 2, sections 1–2: Black and White use their stones and alternate moves",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only verification of the Black/White two-player structure; no source text is copied.",
+      "attributionDuty": "required",
+      "attributionText": "British Go Association, Tournament Rules of Play",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck sections 1–2 of the linked BGA Rules of Play and unpublish the play mode if the count cannot be supported.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_go_equipment",
+      "target": {
+        "entityType": "requirement",
+        "entityId": "req_go_set",
+        "fieldPath": "itemCode"
+      },
+      "sourceName": "British Go Association — Rules of Play",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://www.britgo.org/files/rules/rulesofplay.pdf",
+      "sourceLocator": "Page 2, section 1: the board and Black/White stones",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only verification that the scoped physical game uses a board and two colours of stones; no source text or imagery is copied.",
+      "attributionDuty": "required",
+      "attributionText": "British Go Association, Tournament Rules of Play",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Recheck section 1 of the linked BGA Rules of Play and revise the equipment mapping if needed.",
+      "publicationStatus": "published"
+    },
+    {
+      "id": "claim_go_rules_rights",
+      "target": {
+        "entityType": "rulesItem",
+        "entityId": "rules_go_bga",
+        "fieldPath": "rights"
+      },
+      "sourceName": "British Go Association — Default Rules",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://www.britgo.org/rules/approved",
+      "sourceLocator": "BGA Default Rules page",
+      "retrievedAt": "2026-07-17T12:00:00+05:30",
+      "rightsOrPermissionBasis": "Reference-only link to the BGA-hosted page; Game Portal does not reproduce or embed the rules.",
+      "attributionDuty": "required",
+      "attributionText": "British Go Association, Default Rules",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T12:00:00+05:30",
+      "verifiedBy": "GP-1-004 catalog review",
+      "correctionPath": "Remove or replace the reference if BGA withdraws the page or changes its access terms.",
+      "publicationStatus": "published"
+    }
+  ],
+  "mediaAssets": [
+    {
+      "id": "media_chess_placeholder",
+      "gameId": "game_chess",
+      "assetKind": "image",
+      "location": {
+        "kind": "local",
+        "path": "/media/placeholders/game-card.svg"
+      },
+      "altText": "Neutral abstract placeholder for Chess; it does not depict gameplay.",
+      "intrinsicWidth": 1200,
+      "intrinsicHeight": 800,
+      "rights": {
+        "kind": "original",
+        "rightsBasis": "authored",
+        "attributionDuty": "none",
+        "correctionPath": "Replace through a reviewed catalog change if approved Chess artwork becomes available."
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      }
+    },
+    {
+      "id": "media_go_placeholder",
+      "gameId": "game_go",
+      "assetKind": "image",
+      "location": {
+        "kind": "local",
+        "path": "/media/placeholders/game-card.svg"
+      },
+      "altText": "Neutral abstract placeholder for Go; it does not depict gameplay.",
+      "intrinsicWidth": 1200,
+      "intrinsicHeight": 800,
+      "rights": {
+        "kind": "original",
+        "rightsBasis": "authored",
+        "attributionDuty": "none",
+        "correctionPath": "Replace through a reviewed catalog change if approved Go artwork becomes available."
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      }
+    }
+  ],
+  "rulesItems": [
+    {
+      "id": "rules_chess_fide",
+      "gameId": "game_chess",
+      "title": "FIDE Laws of Chess (2023)",
+      "content": {
+        "kind": "external_reference",
+        "url": "https://handbook.fide.com/chapter/E012023"
+      },
+      "rights": {
+        "kind": "source_claim",
+        "claimId": "claim_chess_rules_rights"
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      }
+    },
+    {
+      "id": "rules_go_bga",
+      "gameId": "game_go",
+      "title": "British Go Association default rules",
+      "content": {
+        "kind": "external_reference",
+        "url": "https://www.britgo.org/rules/approved"
+      },
+      "rights": {
+        "kind": "source_claim",
+        "claimId": "claim_go_rules_rights"
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T12:00:00+05:30",
+        "reviewedBy": "GP-1-004 catalog review"
+      }
+    }
+  ]
+}

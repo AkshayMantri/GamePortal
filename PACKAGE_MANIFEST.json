@@ -1,11 +1,13 @@
 {
-  "package": "GamePortal-planning-v4",
-  "package_version": 4,
-  "archive_name": "GamePortal-planning-v4-agents.zip",
+  "package": "GamePortal-bootstrap-authority",
+  "package_version": 5,
+  "source_archive_name": "GamePortal-planning-v4-agents.zip",
   "generated_at": "2026-07-17",
   "repository_target": "https://github.com/AkshayMantri/GamePortal.git",
-  "status": "planning-and-agent-orchestration-only",
-  "production_code_included": false,
+  "status": "bootstrap-authority-snapshot",
+  "manifest_scope": "Current root planning and agent-orchestration documents listed in files; application source, tests, generated output, and dependencies are intentionally outside this manifest.",
+  "repository_contains_production_code": true,
+  "integrity_note": "The product owner explicitly waived the source archive's AGENTS.md checksum mismatch. This snapshot records the authorized repository AGENTS.md and subsequent approved decision-log updates.",
   "orchestration": {
     "orchestrator": {
       "model": "GPT5.6-Sol",
@@ -52,8 +54,8 @@
   "files": [
     {
       "name": "AGENTS.md",
-      "bytes": 30221,
-      "sha256": "6f4617f0ebe79f40315f8578e620cd60c18caab4a30272a779b55b823ddb0d45"
+      "bytes": 30682,
+      "sha256": "0388c2f2ec92c1b0f426ac8835b615c621fc8d41ea47a52830e1dbdd86cee49b"
     },
     {
       "name": "ARCHITECTURE.md",
@@ -67,8 +69,8 @@
     },
     {
       "name": "DECISION_LOG.md",
-      "bytes": 9860,
-      "sha256": "f83987e2a67ab8a1bc4e1781d33308c97a37e58a2046c87059ba795a87b229c4"
+      "bytes": 12780,
+      "sha256": "c49258d426f28dfcf8b7965b877dcd38b2b7965ea1c3811c8d48f870b68809e2"
     },
     {
       "name": "GAME_TAXONOMY.md",
@@ -87,8 +89,8 @@
     },
     {
       "name": "PLANNING_INDEX.md",
-      "bytes": 6501,
-      "sha256": "73adffca104d09610f3112d256b930b677929d8d11bb0c03b1ec9a233a1aea90"
+      "bytes": 6664,
+      "sha256": "b7348afca4383d65051c462068429240db897b2a656b4863af4f040011549d5c"
     },
     {
       "name": "PRODUCT.md",

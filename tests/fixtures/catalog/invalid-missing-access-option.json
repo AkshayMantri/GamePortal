@@ -1,0 +1,40 @@
+{
+  "catalogVersion": 1,
+  "contentState": { "kind": "populated" },
+  "games": [
+    {
+      "id": "game_fixture_invalid",
+      "slug": "fixture-invalid",
+      "canonicalTitle": "Invalid Fixture",
+      "sortTitle": "Invalid Fixture",
+      "gameType": "other",
+      "summary": "Test-only invalid record.",
+      "tags": [],
+      "editionIds": [],
+      "mediaAssetIds": [],
+      "rulesItemIds": [],
+      "contentUpdatedAt": "2026-07-17T00:00:00Z",
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "canonicalTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "sortTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "gameType", "basis": { "kind": "original" } },
+        { "fieldPath": "summary", "basis": { "kind": "original" } },
+        { "fieldPath": "tags", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "editions": [],
+  "playModes": [],
+  "accessOptions": [],
+  "requirements": [],
+  "destinations": [],
+  "sourceClaims": [],
+  "mediaAssets": [],
+  "rulesItems": []
+}

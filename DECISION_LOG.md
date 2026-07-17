@@ -76,6 +76,24 @@ These are implementation-detail decisions that can be accepted during repository
 | R-008 | Default to bounded task packets, one write owner per file, and at most three parallel implementation agents | Reduces conflicts while retaining useful concurrency |
 | R-009 | Use isolated Git worktrees for parallel implementation when tasks are genuinely disjoint | Adds workspace management but protects user changes and integration clarity |
 
+# Bootstrap implementation decisions — 2026-07-17
+
+The explicit implementation authorization accepted the authorized bootstrap defaults and permits low-risk, reversible technical choices. These records resolve R-001 and R-003 for the bootstrap without changing product scope.
+
+| ID | Decision | Rationale / consequence |
+|---|---|---|
+| I-001 | Use pnpm 11.13.1 and a package-manager-generated lockfile | Resolves R-001 and fixes a reproducible package-manager baseline |
+| I-002 | Baseline Node.js 24.18.0, Astro 7.1.0, React 19.2.7, and `@astrojs/cloudflare` 14.1.3 | Current compatible releases under D-015/D-016; exact versions require independent build and Worker verification |
+| I-003 | Keep Astro static by default; future dynamic routes opt out of prerendering explicitly | Preserves NFR-06 static degradation and free-tier asset-first behavior |
+| I-004 | Use version-controlled JSON catalog records with shared Zod build/runtime validation | Resolves R-003 for cross-entity ownership, invalid fixtures, and fail-closed publication/provenance gates |
+| I-005 | Use `wrangler.jsonc` and explicit local/no-provision bootstrap commands | Prevents unauthorized remote resource creation or deployment |
+| I-006 | Pin TypeScript 6.0.3 rather than current 7.0.2 | Selected `typescript-eslint` compatibility is `<6.1`; avoids an unsupported lint/type toolchain |
+| I-007 | Keep `@astrojs/cloudflare` pinned but inactive while every route is static | Adapter 14.1.3 injected unapproved Session KV and Images bindings when activated; static Workers assets need no adapter, and activation returns to Sol High before the first on-demand route |
+| I-008 | Use ESLint 9.39.2 with `eslint-plugin-astro` 1.7.0 and `eslint-plugin-jsx-a11y` 6.10.2 | Astro plugin 3 requires ESLint 10 while JSX-a11y 6.10.2 supports only through ESLint 9; this is the newest mutually declared compatible lint matrix without peer overrides |
+| I-009 | Publish only two bootstrap proof records, Chess and Go, and leave the other 18 candidate slots unrepresented | Primary FIDE/BGA sources, original summaries, explicit unknown age/time, and local neutral media prove the full catalog contract without fabricating the target seed slate |
+| I-010 | Use a binding-only local D1 database for append-only link observations and a current-status projection | Installed Wrangler 4.111 accepts a binding without a remote ID; all commands require `--local`, and no account, vote, event, or analytics tables are introduced speculatively |
+| I-011 | Treat `PACKAGE_MANIFEST.json` and `SHA256SUMS.txt` as a scoped repository authority snapshot | The original archive manifest became stale after authorized decision updates and the AGENTS.md checksum waiver; the repository now verifies the current authority files deterministically without pretending to inventory application code |
+
 # Blocked / launch gates
 
 | ID | Blocker | Resolution owner |
@@ -105,9 +123,9 @@ These proposals remain isolated and must not enter MVP navigation, requirements,
 
 The model-routing and role-separation policy in `AGENTS.md` is confirmed. Before implementation begins, confirm these remaining implementation details:
 
-- [ ] `pnpm` package manager.
+- [x] `pnpm` package manager — accepted for bootstrap as I-001.
 - [ ] Passkey + recovery-code account design.
-- [ ] Catalog file format: JSON/YAML/content collections.
+- [x] Catalog file format — version-controlled JSON plus Zod, accepted for bootstrap as I-004.
 - [ ] Exact initial font pair after language/license test.
 - [ ] Analytics retention of 30 days.
 - [ ] Public-event legal review path.

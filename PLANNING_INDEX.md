@@ -3,9 +3,9 @@
 **Repository target:** `https://github.com/AkshayMantri/GamePortal.git`  
 **Planning baseline date:** 2026-07-16  
 **Agent-orchestration update:** 2026-07-17  
-**Package status:** Product, technical direction, and agent operating model approved; implementation has not started.
+**Package status:** Product, technical direction, and agent operating model approved; Milestone 0 and the Milestone 1 foundation are implemented locally and awaiting Git delivery.
 
-This package converts the approved discovery decisions into durable, implementation-ready planning documents and a repository-wide agent operating system. It intentionally contains no production application code, generated scaffold, credentials, vendor resources, or deployment configuration.
+This package converts the approved discovery decisions into durable planning documents and a repository-wide agent operating system. The repository now also contains the authorized static Astro scaffold, validated proof catalog, local-only D1 baseline, and deterministic quality gates. It contains no credentials, provisioned vendor resources, remote resource identifiers, or deployment actions.
 
 ## Authority order
 
@@ -52,7 +52,7 @@ When documents conflict, use this order:
 
 ## Important architecture correction
 
-Current Astro 6 Cloudflare guidance no longer supports deploying on-demand Astro applications through the old Cloudflare Pages adapter path. The durable plan therefore uses **Cloudflare Workers with static assets**, not Pages Functions. Fully static routes still behave as static assets; dynamic routes use the Worker.
+Current Astro Cloudflare guidance no longer supports deploying on-demand Astro applications through the old Cloudflare Pages adapter path. The durable plan therefore uses **Cloudflare Workers with static assets**, not Pages Functions. Fully static routes still behave as static assets; dynamic routes use the Worker.
 
 ## Document map
 

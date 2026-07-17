@@ -1,0 +1,59 @@
+{
+  "name": "game-portal",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.13.1",
+  "engines": {
+    "node": "24.18.0",
+    "pnpm": "11.13.1"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "catalog:validate": "node scripts/validate-catalog.ts",
+    "d1:migrate:local": "wrangler d1 migrations apply DB --local",
+    "integrity:check": "node scripts/validate-package-integrity.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "build": "pnpm catalog:validate && astro build",
+    "check": "astro check",
+    "test:unit": "vitest run",
+    "test:d1:local": "vitest run tests/unit/d1-baseline.test.ts",
+    "test:unit:watch": "vitest",
+    "test:browser": "pnpm build && playwright test",
+    "test:browser:built": "playwright test",
+    "preview": "astro preview",
+    "verify": "pnpm format:check && pnpm lint && pnpm check && pnpm integrity:check && pnpm test:unit && pnpm test:browser",
+    "verify:ci": "pnpm format:check && pnpm lint && pnpm check && pnpm integrity:check && pnpm test:unit && pnpm build && pnpm test:browser:built"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "14.1.3",
+    "@astrojs/react": "6.0.1",
+    "astro": "7.1.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "@axe-core/playwright": "4.12.1",
+    "@eslint/js": "9.39.2",
+    "@playwright/test": "1.61.1",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.2",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-astro": "1.7.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.7.0",
+    "prettier": "3.9.5",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.64.0",
+    "vitest": "4.1.10",
+    "wrangler": "4.111.0"
+  }
+}
