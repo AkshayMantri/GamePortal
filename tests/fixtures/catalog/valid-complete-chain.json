@@ -1,0 +1,230 @@
+{
+  "catalogVersion": 1,
+  "contentState": { "kind": "populated" },
+  "games": [
+    {
+      "id": "game_fixture",
+      "slug": "fixture-game",
+      "canonicalTitle": "Fixture Game",
+      "sortTitle": "Fixture Game",
+      "gameType": "abstract_strategy",
+      "summary": "Original test-only summary.",
+      "tags": ["fixture"],
+      "editionIds": ["edition_fixture"],
+      "mediaAssetIds": ["media_fixture"],
+      "rulesItemIds": ["rules_fixture"],
+      "contentUpdatedAt": "2026-07-17T00:00:00Z",
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "canonicalTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "sortTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "gameType", "basis": { "kind": "original" } },
+        { "fieldPath": "summary", "basis": { "kind": "original" } },
+        { "fieldPath": "tags", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "editions": [
+    {
+      "id": "edition_fixture",
+      "gameId": "game_fixture",
+      "title": "Test-only traditional variant",
+      "variantKind": "traditional",
+      "publisherOrTradition": { "state": "known", "value": "Test fixture" },
+      "ageGuidance": {
+        "state": "known",
+        "minimumYears": 8,
+        "sourceClaimId": "claim_fixture_age"
+      },
+      "languages": { "state": "known", "tags": ["en"] },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "playModeIds": ["mode_fixture"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "title", "basis": { "kind": "original" } },
+        { "fieldPath": "variantKind", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "publisherOrTradition",
+          "basis": { "kind": "original" }
+        },
+        {
+          "fieldPath": "ageGuidance",
+          "basis": { "kind": "source_claim", "claimId": "claim_fixture_age" }
+        },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "playModes": [
+    {
+      "id": "mode_fixture",
+      "editionId": "edition_fixture",
+      "mode": "in_person",
+      "synchrony": "synchronous",
+      "supportedPlayers": {
+        "state": "known",
+        "shape": { "kind": "range", "minimum": 2, "maximum": 4 }
+      },
+      "time": {
+        "setupOrAccess": { "state": "known", "minutes": 5 },
+        "teaching": { "state": "unknown", "reason": "varies_by_provider" },
+        "play": { "state": "known", "minimum": 20, "maximum": 40 }
+      },
+      "teamStructure": { "state": "unknown", "reason": "not_applicable" },
+      "accessOptionIds": ["access_fixture"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "mode", "basis": { "kind": "original" } },
+        { "fieldPath": "synchrony", "basis": { "kind": "original" } },
+        { "fieldPath": "supportedPlayers", "basis": { "kind": "original" } },
+        { "fieldPath": "time", "basis": { "kind": "original" } },
+        { "fieldPath": "teamStructure", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "accessOptions": [
+    {
+      "id": "access_fixture",
+      "playModeId": "mode_fixture",
+      "accessKind": "physical_instructions",
+      "playable": true,
+      "provider": { "state": "known", "value": "Game Portal test fixture" },
+      "accountRequirement": { "state": "known", "value": "none" },
+      "installationRequirement": { "state": "known", "value": "none" },
+      "priceClassification": { "state": "known", "value": "physical_owned" },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "languages": { "state": "known", "tags": ["en"] },
+      "requirementIds": ["req_fixture_board"],
+      "destination": { "state": "none", "reason": "not_required" },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "accessKind", "basis": { "kind": "original" } },
+        { "fieldPath": "playable", "basis": { "kind": "original" } },
+        { "fieldPath": "provider", "basis": { "kind": "original" } },
+        { "fieldPath": "accountRequirement", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "installationRequirement",
+          "basis": { "kind": "original" }
+        },
+        { "fieldPath": "priceClassification", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "destination", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req_fixture_board",
+      "accessOptionId": "access_fixture",
+      "requirementType": "equipment",
+      "itemCode": "fixture_board",
+      "minimumQuantity": 1,
+      "scope": "per_group",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        { "fieldPath": "itemCode", "basis": { "kind": "original" } },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "destinations": [],
+  "sourceClaims": [
+    {
+      "id": "claim_fixture_age",
+      "target": {
+        "entityType": "edition",
+        "entityId": "edition_fixture",
+        "fieldPath": "ageGuidance"
+      },
+      "sourceName": "Example standards body fixture",
+      "sourceType": "standards_body",
+      "canonicalUrl": "https://example.com/fixture-source",
+      "sourceLocator": "Fixture section 1",
+      "retrievedAt": "2026-07-17T00:00:00Z",
+      "rightsOrPermissionBasis": "Test-only metadata reference; no copied text.",
+      "attributionDuty": "none",
+      "verificationState": "approved",
+      "verifiedAt": "2026-07-17T00:00:00Z",
+      "verifiedBy": "fixture-reviewer",
+      "correctionPath": "Replace this fixture through the test suite.",
+      "publicationStatus": "published"
+    }
+  ],
+  "mediaAssets": [
+    {
+      "id": "media_fixture",
+      "gameId": "game_fixture",
+      "assetKind": "image",
+      "location": { "kind": "local", "path": "/fixture-only.svg" },
+      "altText": "Test-only neutral fixture.",
+      "intrinsicWidth": 100,
+      "intrinsicHeight": 100,
+      "rights": {
+        "kind": "original",
+        "rightsBasis": "authored",
+        "attributionDuty": "none",
+        "correctionPath": "Replace this fixture through the test suite."
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      }
+    }
+  ],
+  "rulesItems": [
+    {
+      "id": "rules_fixture",
+      "gameId": "game_fixture",
+      "title": "Fixture rules summary",
+      "content": {
+        "kind": "original_summary",
+        "text": "Original test-only instructions."
+      },
+      "rights": {
+        "kind": "original",
+        "rightsBasis": "authored",
+        "attributionDuty": "none",
+        "correctionPath": "Replace this fixture through the test suite."
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-17T00:00:00Z",
+        "reviewedBy": "fixture-reviewer"
+      }
+    }
+  ]
+}

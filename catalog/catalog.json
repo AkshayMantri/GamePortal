@@ -1,0 +1,16 @@
+{
+  "catalogVersion": 1,
+  "contentState": {
+    "kind": "contract_only_empty",
+    "note": "GP-1-003 defines the contract only; GP-1-004 supplies reviewed proof records."
+  },
+  "games": [],
+  "editions": [],
+  "playModes": [],
+  "accessOptions": [],
+  "requirements": [],
+  "destinations": [],
+  "sourceClaims": [],
+  "mediaAssets": [],
+  "rulesItems": []
+}
