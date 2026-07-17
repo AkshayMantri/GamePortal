@@ -15,7 +15,7 @@ Current Astro and Cloudflare guidance supports deployment to Cloudflare Workers 
 - Use Node.js 24.18.0, pnpm 11.13.1, Astro 7.1.0, React 19.2.7, and `@astrojs/cloudflare` 14.1.3 as the bootstrap baseline.
 - Keep Astro output static by default. Only future routes that need mutable state may opt out of prerendering explicitly.
 - Use React only for bounded interactive islands; do not hydrate whole pages.
-- Use `wrangler.jsonc`, asset-first routing (`run_worker_first` false/default), and D1 bindings without remote IDs.
+- Use `wrangler.jsonc` and asset-first routing (`run_worker_first` false/default). Keep `@astrojs/cloudflare` pinned but inactive while all routes are static: activating version 14.1.3 injected Session KV and Images bindings that violate the bootstrap's storage and provisioning boundaries. Reconsider activation before the first authorized on-demand route.
 - Every bootstrap D1 command must be explicitly local and disable automatic provisioning. No deploy, remote-development, login, resource-creation, or production identifier belongs in this delivery.
 - Store catalog records as version-controlled JSON validated by shared Zod schemas. This representation supports cross-entity and fail-closed publication/provenance checks more directly than treating each entity as an independent content entry.
 - Pin TypeScript 6.0.3 because the selected lint toolchain does not yet support TypeScript 7.0.2.
@@ -40,6 +40,7 @@ Static requests avoid Worker quota when an asset matches, and catalog content re
 - Whole-page React hydration: unnecessary bundle and runtime cost.
 - Remote D1 provisioning: explicitly unauthorized.
 - Astro Sessions backed by automatically provisioned KV: adds an unapproved storage service.
+- Activating the Cloudflare adapter for an all-static build: currently adds unapproved Session KV and Images bindings without providing bootstrap value.
 - TypeScript 7.0.2: outside the supported range of the selected lint parser.
 
 ## Rollback

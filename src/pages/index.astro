@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Game Portal | Bring the right game to the table";
+const description =
+  "A non-commercial guide for finding and browsing games that fit your group.";
+---
+
+<BaseLayout {title} {description}>
+  <article class="opening">
+    <p class="eyebrow">A practical game-night guide</p>
+    <h1>Bring the right game to the table.</h1>
+    <p class="lede">
+      Game Portal is a non-commercial guide for finding and browsing games that
+      fit your group, your time, and the ways you can play.
+    </p>
+
+    <div class="rule" aria-hidden="true"></div>
+
+    <section class="principles" aria-labelledby="principles-title">
+      <div>
+        <p class="margin-note">How the collection works</p>
+        <h2 id="principles-title">Practical details before guesswork.</h2>
+      </div>
+      <p>
+        Party size comes first. Clear time, access, and material requirements
+        help groups choose with confidence, while uncertain information stays
+        visibly uncertain.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

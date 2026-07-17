@@ -88,6 +88,7 @@ The explicit implementation authorization accepted the authorized bootstrap defa
 | I-004 | Use version-controlled JSON catalog records with shared Zod build/runtime validation | Resolves R-003 for cross-entity ownership, invalid fixtures, and fail-closed publication/provenance gates |
 | I-005 | Use `wrangler.jsonc` and explicit local/no-provision bootstrap commands | Prevents unauthorized remote resource creation or deployment |
 | I-006 | Pin TypeScript 6.0.3 rather than current 7.0.2 | Selected `typescript-eslint` compatibility is `<6.1`; avoids an unsupported lint/type toolchain |
+| I-007 | Keep `@astrojs/cloudflare` pinned but inactive while every route is static | Adapter 14.1.3 injected unapproved Session KV and Images bindings when activated; static Workers assets need no adapter, and activation returns to Sol High before the first on-demand route |
 
 # Blocked / launch gates
 
