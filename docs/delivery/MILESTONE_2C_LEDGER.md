@@ -1,7 +1,7 @@
 # Milestone 2C delivery ledger
 
 **Task:** `GP-2-003` — Party-size-first Find control  
-**State:** REVIEWED — task verification passed; Git delivery pending
+**State:** REGRESSION_VERIFIED — draft PR delivery pending
 
 ## Scope
 
@@ -28,8 +28,10 @@ analytics, D1, accounts, catalog changes, and external actions remain deferred.
   on Browse, `/`, and `/find`. Each Find script is 2,429 bytes raw / 987 bytes
   gzip; root and `/find` are byte-identical.
 - Sol scope/product/architecture/security/privacy/accessibility review: passed.
-- Git Steward commit/integration: pending.
-- Integrated-candidate regression: pending.
+- Git Steward task commit: `6998b6e8b26a628253f20df19063314fd6d422ac`.
+- Fresh integrated-candidate regression: `corepack pnpm verify:ci` passed in
+  138.5 seconds; 154/154 unit and 54/54 browser tests passed with no failures or
+  skips. The generated `/` and `/find` documents were byte-identical.
 - Draft PR and hosted CI: pending.
 
 Manual screen-reader narration and genuine browser-zoom 200% checks remain
