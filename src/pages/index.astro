@@ -1,12 +1,13 @@
 ---
 import FindScaffold from "../components/FindScaffold.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { findFilterOptions } from "../catalog/find-options-loader";
 
 const title = "Find | Game Portal";
 const description =
-  "Find games for a group by party size and practical play constraints. Functional discovery tools are forthcoming.";
+  "Prepare a shareable game-night setup by party size and practical play constraints.";
 ---
 
-<BaseLayout {title} {description}>
-  <FindScaffold />
+<BaseLayout {title} {description} canonicalPath="/find">
+  <FindScaffold options={findFilterOptions} />
 </BaseLayout>

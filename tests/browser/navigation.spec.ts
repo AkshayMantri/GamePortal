@@ -37,7 +37,7 @@ test("every remaining scaffold resolves with honest metadata and no fake feature
   expect(new Set(routes.map(({ title }) => title)).size).toBe(routes.length);
 });
 
-test("root renders Find directly without a redirect or canonical mismatch", async ({
+test("root renders Find directly while declaring /find as canonical", async ({
   page,
 }) => {
   const response = await page.goto("/");
@@ -47,7 +47,11 @@ test("root renders Find directly without a redirect or canonical mismatch", asyn
   await expect(
     page.getByRole("heading", { level: 1, name: "Find" }),
   ).toBeVisible();
-  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "/find",
+  );
   await expect(
     page.getByRole("link", { name: "Find", exact: true }).last(),
   ).toHaveAttribute("aria-current", "page");

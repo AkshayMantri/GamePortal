@@ -1,0 +1,256 @@
+{
+  "catalogVersion": 1,
+  "contentState": { "kind": "populated" },
+  "games": [
+    {
+      "id": "game_filter_fixture",
+      "slug": "filter-fixture",
+      "canonicalTitle": "Filter Fixture",
+      "sortTitle": "Filter Fixture",
+      "gameType": "other",
+      "summary": "Original test-only filter registry summary.",
+      "tags": ["fixture"],
+      "editionIds": ["edition_filter_fixture"],
+      "mediaAssetIds": [],
+      "rulesItemIds": [],
+      "contentUpdatedAt": "2026-07-20T00:00:00Z",
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "canonicalTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "sortTitle", "basis": { "kind": "original" } },
+        { "fieldPath": "gameType", "basis": { "kind": "original" } },
+        { "fieldPath": "summary", "basis": { "kind": "original" } },
+        { "fieldPath": "tags", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "editions": [
+    {
+      "id": "edition_filter_fixture",
+      "gameId": "game_filter_fixture",
+      "title": "Complete filter fixture edition",
+      "variantKind": "adaptation",
+      "publisherOrTradition": { "state": "known", "value": "Test fixture" },
+      "ageGuidance": { "state": "unknown", "reason": "not_verified" },
+      "languages": { "state": "known", "tags": ["fr-CA"] },
+      "regions": { "state": "known", "scope": "unrestricted" },
+      "playModeIds": ["mode_filter_fixture"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "title", "basis": { "kind": "original" } },
+        { "fieldPath": "variantKind", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "publisherOrTradition",
+          "basis": { "kind": "original" }
+        },
+        { "fieldPath": "ageGuidance", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "playModes": [
+    {
+      "id": "mode_filter_fixture",
+      "editionId": "edition_filter_fixture",
+      "mode": "remote",
+      "synchrony": "synchronous",
+      "supportedPlayers": {
+        "state": "known",
+        "shape": { "kind": "range", "minimum": 1, "maximum": 8 }
+      },
+      "time": {
+        "setupOrAccess": { "state": "known", "minutes": 5 },
+        "teaching": { "state": "known", "minutes": 10 },
+        "play": { "state": "known", "minimum": 15, "maximum": 45 }
+      },
+      "teamStructure": { "state": "unknown", "reason": "not_applicable" },
+      "accessOptionIds": ["access_filter_fixture"],
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "mode", "basis": { "kind": "original" } },
+        { "fieldPath": "synchrony", "basis": { "kind": "original" } },
+        { "fieldPath": "supportedPlayers", "basis": { "kind": "original" } },
+        { "fieldPath": "time", "basis": { "kind": "original" } },
+        { "fieldPath": "teamStructure", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "accessOptions": [
+    {
+      "id": "access_filter_fixture",
+      "playModeId": "mode_filter_fixture",
+      "accessKind": "browser",
+      "playable": true,
+      "provider": { "state": "known", "value": "Test-only provider" },
+      "accountRequirement": { "state": "known", "value": "host_only" },
+      "installationRequirement": { "state": "known", "value": "host_only" },
+      "priceClassification": { "state": "known", "value": "free" },
+      "regions": {
+        "state": "known",
+        "scope": "allowlist",
+        "regions": ["CA", "US"]
+      },
+      "languages": { "state": "known", "tags": ["fr-CA"] },
+      "requirementIds": [
+        "req_filter_phone",
+        "req_filter_computer",
+        "req_filter_chess_set",
+        "req_filter_go_set"
+      ],
+      "destination": {
+        "state": "external",
+        "destinationId": "dest_filter_fixture"
+      },
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "accessKind", "basis": { "kind": "original" } },
+        { "fieldPath": "playable", "basis": { "kind": "original" } },
+        { "fieldPath": "provider", "basis": { "kind": "original" } },
+        { "fieldPath": "accountRequirement", "basis": { "kind": "original" } },
+        {
+          "fieldPath": "installationRequirement",
+          "basis": { "kind": "original" }
+        },
+        { "fieldPath": "priceClassification", "basis": { "kind": "original" } },
+        { "fieldPath": "regions", "basis": { "kind": "original" } },
+        { "fieldPath": "languages", "basis": { "kind": "original" } },
+        { "fieldPath": "destination", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "req_filter_phone",
+      "accessOptionId": "access_filter_fixture",
+      "requirementType": "device",
+      "itemCode": "phone",
+      "minimumQuantity": 1,
+      "scope": "per_person",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        { "fieldPath": "itemCode", "basis": { "kind": "original" } },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "req_filter_computer",
+      "accessOptionId": "access_filter_fixture",
+      "requirementType": "device",
+      "itemCode": "computer",
+      "minimumQuantity": 1,
+      "scope": "host_only",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        { "fieldPath": "itemCode", "basis": { "kind": "original" } },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "req_filter_chess_set",
+      "accessOptionId": "access_filter_fixture",
+      "requirementType": "equipment",
+      "itemCode": "chess_set",
+      "minimumQuantity": 1,
+      "scope": "per_group",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        { "fieldPath": "itemCode", "basis": { "kind": "original" } },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    },
+    {
+      "id": "req_filter_go_set",
+      "accessOptionId": "access_filter_fixture",
+      "requirementType": "equipment",
+      "itemCode": "go_set",
+      "minimumQuantity": 1,
+      "scope": "per_group",
+      "mandatory": true,
+      "publicationStatus": "published",
+      "publicationReview": {
+        "state": "approved",
+        "reviewedAt": "2026-07-20T00:00:00Z",
+        "reviewedBy": "filter-fixture-reviewer"
+      },
+      "provenance": [
+        { "fieldPath": "requirementType", "basis": { "kind": "original" } },
+        { "fieldPath": "itemCode", "basis": { "kind": "original" } },
+        { "fieldPath": "minimumQuantity", "basis": { "kind": "original" } },
+        { "fieldPath": "scope", "basis": { "kind": "original" } },
+        { "fieldPath": "mandatory", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "id": "dest_filter_fixture",
+      "url": "https://example.com/play",
+      "destinationType": "official_play",
+      "provider": "Test-only provider",
+      "publicDisplayDomain": "example.com",
+      "reviewState": "approved",
+      "reviewedAt": "2026-07-20T00:00:00Z",
+      "reviewedBy": "filter-fixture-reviewer",
+      "redirectPolicy": "same_domain",
+      "publicationStatus": "published",
+      "provenance": [
+        { "fieldPath": "url", "basis": { "kind": "original" } },
+        { "fieldPath": "destinationType", "basis": { "kind": "original" } },
+        { "fieldPath": "provider", "basis": { "kind": "original" } },
+        { "fieldPath": "publicDisplayDomain", "basis": { "kind": "original" } },
+        { "fieldPath": "redirectPolicy", "basis": { "kind": "original" } }
+      ]
+    }
+  ],
+  "sourceClaims": [],
+  "mediaAssets": [],
+  "rulesItems": []
+}

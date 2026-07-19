@@ -1,7 +1,7 @@
 # Table Notes shell and navigation contract
 
-**Milestone:** 2A  
-**Decision authority:** D-001, D-002, D-006, D-011, D-014, D-015, D-016, D-027, D-029, I-012  
+**Milestone:** 2A shell, amended by 2D  
+**Decision authority:** D-001, D-002, D-006, D-011, D-014, D-015, D-016, D-027, D-029, D-030, I-012  
 **Status:** Implementation contract; formal independent verification remains a separate gate
 
 ## Shell boundary
@@ -11,8 +11,8 @@
 - a visible-on-focus link to `#main-content`;
 - a semantic banner, one breakpoint-appropriate primary navigation, one focusable main landmark, and a restrained factual footer;
 - route-owned title and description metadata plus `robots=noindex,follow` while the routes are scaffolds;
-- no canonical link, because `/` and `/find` intentionally render the same Find scaffold and a misleading canonical must not be invented;
-- no client hydration, navigation script, external runtime request, analytics, user data, secrets, or D1 rendering.
+- one canonical link to `/find` on both Find aliases, so shared and normalized filter URLs have one stable target;
+- no client hydration, navigation script, external runtime request, analytics, user data, secrets, or D1 rendering. The only shell-adjacent client code is the bounded M2D Find controller emitted once and referenced by `/` and `/find`; Browse retains its separately bounded inline M2C controller.
 
 The root route renders the Find scaffold directly. It does not redirect and does not put marketing content before Find. Every temporary scaffold must be replaced by its authorized feature slice before indexing or public release; removing `noindex` is part of that later feature's acceptance work.
 
@@ -61,6 +61,6 @@ Source Sans 3 uses tag `3.052R`, release commit `ed18089`. The five-font transfe
 
 ## Verification ownership
 
-Unit checks cover route normalization, root/exact/nested matching, false prefixes, unknown routes, projections, ordering, More membership, and current semantics. Browser checks cover all scaffolds, metadata, internal links, 320/390/768 compact layouts, 1024/1440 desktop layouts, focus, overlap, overflow, forced colors, reduced motion, local fonts, no scripts/islands/external assets, JavaScript-disabled reading, and automated accessibility. A build-output regression walks `dist`, requires exactly ten HTML files, rejects every JavaScript asset, and rejects script, island, or JavaScript-asset references in every generated page.
+Unit checks cover route normalization, root/exact/nested matching, false prefixes, unknown routes, projections, ordering, More membership, and current semantics. Browser checks cover all scaffolds, metadata, internal links, 320/390/768 compact layouts, 1024/1440 desktop layouts, focus, overlap, overflow, forced colors, reduced motion, local fonts, bounded scripts, no islands or external assets, JavaScript-disabled reading, and automated accessibility. A build-output regression walks `dist`, requires exactly 13 HTML files, permits exactly one emitted JavaScript asset for the shared Find controller, requires that asset to be referenced only by `/` and `/find`, preserves Browse's existing inline script, and rejects Astro islands, React runtime markers, external script sources, or controller references on every other page.
 
 Implementer checks do not satisfy acceptance. A fresh independent tester must execute the formal task charter, and the integrated candidate must pass a separate regression gate before Git delivery.

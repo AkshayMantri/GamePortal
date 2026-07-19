@@ -1,0 +1,335 @@
+---
+import type { FindFilterOptions } from "../find/filter-options";
+
+interface Props {
+  options: FindFilterOptions;
+}
+
+const { options } = Astro.props;
+const timePresets = [15, 30, 45, 60, 90, 120];
+---
+
+<form class="find-filters" data-find-filter-form novalidate>
+  <div class="find-filters__heading">
+    <div>
+      <p class="eyebrow">Practical setup</p>
+      <h2 id="find-filter-heading">More filters</h2>
+    </div>
+    <button
+      class="find-filters__close"
+      type="button"
+      data-filter-close
+      aria-label="Close filters">Close</button
+    >
+  </div>
+
+  <fieldset class="find-filter-group">
+    <legend>1. Together or remote?</legend>
+    <p id="play-mode-help">Choose how the group plans to play.</p>
+    <div class="find-choice-list" aria-describedby="play-mode-help">
+      <label
+        ><input type="radio" name="play-mode" value="any" checked /> Any</label
+      >
+      <label
+        ><input type="radio" name="play-mode" value="in_person" /> Together in person</label
+      >
+      <label
+        ><input type="radio" name="play-mode" value="remote" /> Remote</label
+      >
+    </div>
+  </fieldset>
+
+  <fieldset class="find-filter-group">
+    <legend>2. How much time do you have?</legend>
+    <p id="time-help">
+      This limit includes access or setup, teaching, and the upper expected play
+      time.
+    </p>
+    <label class="find-field" for="find-time-choice">
+      Time limit
+      <select
+        id="find-time-choice"
+        name="time-choice"
+        aria-describedby="time-help"
+      >
+        <option value="">No time limit</option>
+        {
+          timePresets.map((minutes) => (
+            <option value={minutes}>{minutes} minutes</option>
+          ))
+        }
+        <option value="custom">Another number</option>
+      </select>
+    </label>
+    <label class="find-field find-field--custom" for="find-time-custom">
+      Custom minutes
+      <input
+        id="find-time-custom"
+        name="time-custom"
+        type="number"
+        min="1"
+        max="1440"
+        step="1"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-describedby="time-custom-help"
+      />
+    </label>
+    <p id="time-custom-help">Enter a whole number from 1 to 1,440 minutes.</p>
+    <p class="find-field-error" id="time-error" data-error-for="time" hidden>
+    </p>
+  </fieldset>
+
+  <fieldset class="find-filter-group">
+    <legend>3. Youngest player</legend>
+    <label class="find-field" for="find-age">
+      Age in whole years
+      <input
+        id="find-age"
+        name="youngest-age"
+        type="number"
+        min="0"
+        max="120"
+        step="1"
+        inputmode="numeric"
+        autocomplete="off"
+        aria-describedby="age-help"
+      />
+    </label>
+    <p id="age-help">
+      Leave blank for no age filter. Age guidance is not a guarantee of
+      suitability. When applied, this value appears in the shareable page
+      address.
+    </p>
+    <p class="find-field-error" id="age-error" data-error-for="age" hidden></p>
+  </fieldset>
+
+  {
+    options.devices.length > 0 ? (
+      <fieldset class="find-filter-group" data-inventory="devices">
+        <legend>4. Devices available</legend>
+        <div class="find-choice-list">
+          <label>
+            <input
+              type="radio"
+              name="devices-kind"
+              value="unconstrained"
+              checked
+            />{" "}
+            Do not limit by devices
+          </label>
+          <label>
+            <input type="radio" name="devices-kind" value="none" /> No devices
+            available
+          </label>
+          <label>
+            <input type="radio" name="devices-kind" value="specified" /> Use
+            this device list
+          </label>
+        </div>
+        <div class="find-inventory-items">
+          {options.devices.map((option) => (
+            <div class="find-inventory-row" data-inventory-item={option.code}>
+              <label>
+                <input type="checkbox" name="device-item" value={option.code} />{" "}
+                {option.label}
+              </label>
+              <label>
+                Quantity for {option.label}
+                <input
+                  type="number"
+                  name={`device-quantity-${option.code}`}
+                  min="1"
+                  max="99"
+                  step="1"
+                  inputmode="numeric"
+                  value="1"
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+        <p
+          class="find-field-error"
+          id="devices-error"
+          data-error-for="devices"
+          hidden
+        />
+      </fieldset>
+    ) : null
+  }
+
+  {
+    options.equipment.length > 0 ? (
+      <fieldset class="find-filter-group" data-inventory="equipment">
+        <legend>
+          {options.devices.length > 0 ? "5" : "4"}. Equipment available
+        </legend>
+        <div class="find-choice-list">
+          <label>
+            <input
+              type="radio"
+              name="equipment-kind"
+              value="unconstrained"
+              checked
+            />{" "}
+            Do not limit by equipment
+          </label>
+          <label>
+            <input type="radio" name="equipment-kind" value="none" /> No
+            equipment available
+          </label>
+          <label>
+            <input type="radio" name="equipment-kind" value="specified" /> Use
+            this equipment list
+          </label>
+        </div>
+        <div class="find-inventory-items">
+          {options.equipment.map((option) => (
+            <div class="find-inventory-row" data-inventory-item={option.code}>
+              <label>
+                <input
+                  type="checkbox"
+                  name="equipment-item"
+                  value={option.code}
+                />{" "}
+                {option.label}
+              </label>
+              <label>
+                Quantity for {option.label}
+                <input
+                  type="number"
+                  name={`equipment-quantity-${option.code}`}
+                  min="1"
+                  max="99"
+                  step="1"
+                  inputmode="numeric"
+                  value="1"
+                />
+              </label>
+            </div>
+          ))}
+        </div>
+        <p
+          class="find-field-error"
+          id="equipment-error"
+          data-error-for="equipment"
+          hidden
+        />
+      </fieldset>
+    ) : null
+  }
+
+  {
+    options.regions.length > 0 ? (
+      <fieldset class="find-filter-group">
+        <legend>Available in</legend>
+        <label class="find-field" for="find-region">
+          Region
+          <select id="find-region" name="region">
+            <option value="">Any represented region</option>
+            {options.regions.map((option) => (
+              <option value={option.code}>{option.label}</option>
+            ))}
+          </select>
+        </label>
+      </fieldset>
+    ) : null
+  }
+
+  {
+    options.languages.length > 0 ? (
+      <fieldset class="find-filter-group">
+        <legend>Play language</legend>
+        <label class="find-field" for="find-language">
+          Language
+          <select id="find-language" name="play-language">
+            <option value="">Any published language</option>
+            {options.languages.map((option) => (
+              <option value={option.code}>{option.label}</option>
+            ))}
+          </select>
+        </label>
+      </fieldset>
+    ) : null
+  }
+
+  <fieldset class="find-filter-group">
+    <legend>Accounts</legend>
+    <p id="accounts-help">
+      Choose the strictest account setup the group accepts.
+    </p>
+    <div class="find-choice-list" aria-describedby="accounts-help">
+      <label
+        ><input type="radio" name="accounts" value="any" checked /> Any account setup</label
+      >
+      <label
+        ><input type="radio" name="accounts" value="none" /> No accounts</label
+      >
+      <label
+        ><input type="radio" name="accounts" value="host_only_or_none" /> Host account
+        or none</label
+      >
+    </div>
+  </fieldset>
+
+  <fieldset class="find-filter-group">
+    <legend>Installation</legend>
+    <p id="install-help">
+      Account and installation requirements are kept separate.
+    </p>
+    <div class="find-choice-list" aria-describedby="install-help">
+      <label
+        ><input type="radio" name="install" value="any" checked /> Any installation
+        setup</label
+      >
+      <label
+        ><input type="radio" name="install" value="browser_only" /> Browser only</label
+      >
+      <label
+        ><input type="radio" name="install" value="host_only_or_browser" /> Host installation
+        or browser</label
+      >
+    </div>
+  </fieldset>
+
+  {
+    options.hasReviewedAvailability ? (
+      <fieldset class="find-filter-group">
+        <legend>Link status</legend>
+        <p id="availability-help">
+          A recent check does not guarantee successful play.
+        </p>
+        <div class="find-choice-list" aria-describedby="availability-help">
+          <label>
+            <input
+              type="radio"
+              name="availability"
+              value="include_unknown"
+              checked
+            />{" "}
+            Include unknown status
+          </label>
+          <label>
+            <input type="radio" name="availability" value="recently_checked" />{" "}
+            Recently checked only
+          </label>
+          <label>
+            <input type="radio" name="availability" value="show_all" /> Show all
+            statuses
+          </label>
+        </div>
+      </fieldset>
+    ) : null
+  }
+
+  <div class="find-filters__actions">
+    <button type="submit" class="find-action find-action--primary"
+      >Update setup</button
+    >
+    <button type="button" class="find-action" data-filter-reset
+      >Reset filters</button
+    >
+    <button type="button" class="find-action" data-filter-cancel>Cancel</button>
+  </div>
+</form>

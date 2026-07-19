@@ -13,6 +13,7 @@
     "catalog:validate": "node scripts/validate-catalog.ts",
     "d1:migrate:local": "wrangler d1 migrations apply DB --local",
     "integrity:check": "node scripts/validate-package-integrity.ts",
+    "integrity:refresh": "node scripts/validate-package-integrity.ts --write",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings 0",

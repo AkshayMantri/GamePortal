@@ -1,6 +1,6 @@
 # Game Portal — Decision Log
 
-**Last updated:** 2026-07-17  
+**Last updated:** 2026-07-20  
 **Owner:** Product owner  
 **Repository target:** `AkshayMantri/GamePortal`
 
@@ -45,6 +45,7 @@ Statuses:
 | D-027 | Planning, implementation, formal testing, Sol High review, and Git delivery are separate gates | Prevents self-approval and preserves auditable ownership |
 | D-028 | Mandatory model roles cannot be silently substituted or downgraded | Unavailable mandatory lanes are reported as blocked rather than weakened |
 | D-029 | Formal verification includes task-level checks and an integrated-candidate regression before push/PR delivery | Prevents individually valid worktrees from producing a broken combined change |
+| D-030 | A deliberately entered youngest-player age may appear in canonical Find URL state as `age=<whole years>` | The value is a coarse 0–120 setup constraint, never a birth date or child profile. It is written only to the user-controlled URL after deliberate entry or when opening a shared link; it is not inferred or written to local/session storage, cookies, accounts, Library/profile data, D1, server storage, logs, or analytics. Clearing removes it. Any future Account or Library absorption requires a new explicit decision. |
 
 # Assumptions
 
