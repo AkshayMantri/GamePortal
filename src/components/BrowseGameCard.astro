@@ -1,0 +1,56 @@
+---
+import type { BrowseGame } from "../catalog/browse.ts";
+
+interface Props {
+  game: BrowseGame;
+}
+
+const { game } = Astro.props;
+---
+
+<article class="browse-card">
+  {
+    game.media ? (
+      <img
+        class="browse-card__image"
+        src={game.media.path}
+        alt={game.media.altText}
+        width={game.media.width}
+        height={game.media.height}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : null
+  }
+  <div class="browse-card__body">
+    <p class="browse-card__type">{game.typeLabel}</p>
+    <h3>{game.title}</h3>
+    <p class="browse-card__summary">{game.summary}</p>
+    <dl class="browse-card__facts">
+      <div>
+        <dt>Players</dt>
+        <dd>{game.playersSummary}</dd>
+      </div>
+      <div>
+        <dt>Time</dt>
+        <dd>{game.timeSummary}</dd>
+      </div>
+      <div>
+        <dt>Age</dt>
+        <dd>{game.ageSummary}</dd>
+      </div>
+      <div>
+        <dt>Play mode</dt>
+        <dd>{game.modesSummary}</dd>
+      </div>
+      <div>
+        <dt>Playable forms</dt>
+        <dd>{game.formsSummary}</dd>
+      </div>
+    </dl>
+    <a class="browse-card__link" href={`/games/${game.slug}`}>
+      View {game.title}
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

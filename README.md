@@ -4,7 +4,7 @@ Game Portal is a strictly non-commercial, guest-first web application for browsi
 
 ## Repository status
 
-The independently verified bootstrap is complete. Milestone 2A establishes the static Table Notes application shell, typed route ownership, responsive desktop and compact navigation, and honest noindex route scaffolds. Feature behavior beyond the shell remains deliberately unimplemented. No production deployment or remote Cloudflare resource is part of this milestone.
+The independently verified bootstrap and Milestone 2A shell are complete. The locally committed and independently regression-verified Milestone 2B candidate adds a fully static, publication-safe Browse collection, represented type navigation, progressive local search, and neutral generated Game route scaffolds for the two reviewed proof records. Remote draft-PR delivery and hosted CI remain before Milestone 2B delivery is complete. No production deployment or remote Cloudflare resource is part of this milestone.
 
 ## Local setup
 
@@ -20,7 +20,7 @@ The local commands do not log in to Cloudflare, provision resources, deploy, or 
 
 The reviewed catalog proof set and the remaining verification work are recorded in [Catalog seed status](docs/catalog/SEED_STATUS.md). Local D1 setup is documented in [Local D1 link-health baseline](docs/d1-local.md).
 
-The shell, navigation, breakpoint, temporary-scaffold, and self-hosted font contracts are documented in [Shell and navigation](docs/ui/SHELL_AND_NAVIGATION.md). The current gated task evidence is recorded in the [Milestone 2A ledger](docs/delivery/MILESTONE_2A_LEDGER.md).
+The shell, navigation, breakpoint, temporary-scaffold, and self-hosted font contracts are documented in [Shell and navigation](docs/ui/SHELL_AND_NAVIGATION.md). Browse publication, summary, route, enhancement, and layout behavior is documented in [Browse collection](docs/ui/BROWSE_COLLECTION.md). Gated delivery state is recorded in the [Milestone 2A ledger](docs/delivery/MILESTONE_2A_LEDGER.md) and [Milestone 2B ledger](docs/delivery/MILESTONE_2B_LEDGER.md).
 
 ## Development and verification
 

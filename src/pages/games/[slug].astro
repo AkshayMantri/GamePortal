@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import { browseCollection } from "../../catalog/browse-loader.ts";
+import type { BrowseGame } from "../../catalog/browse.ts";
+import GameRouteScaffold from "../../components/GameRouteScaffold.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = (() =>
+  browseCollection.games.map((game) => ({
+    params: { slug: game.slug },
+    props: { game },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  game: BrowseGame;
+}
+
+const { game } = Astro.props as Props;
+const title = `${game.title} | Game Portal`;
+const description = `${game.summary} Review published play information for ${game.title}.`;
+const canonicalPath = `/games/${game.slug}` as const;
+---
+
+<BaseLayout {title} {description} {canonicalPath}>
+  <GameRouteScaffold {game} />
+</BaseLayout>

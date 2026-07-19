@@ -1,0 +1,114 @@
+---
+import type { BrowseCollection as BrowseCollectionModel } from "../catalog/browse.ts";
+import "../styles/browse.css";
+import BrowseGameList from "./BrowseGameList.astro";
+
+interface Props {
+  collection: BrowseCollectionModel;
+}
+
+const { collection } = Astro.props;
+const gameCount = collection.games.length;
+const gameCountLabel = `${gameCount} ${gameCount === 1 ? "game" : "games"}`;
+---
+
+<article class="browse-page" data-browse-root>
+  <header class="browse-page__header">
+    <p class="eyebrow">Explore the collection</p>
+    <h1>Browse</h1>
+    <p class="browse-page__purpose">
+      Explore every published game by type or alphabetically, without choosing a
+      party size first.
+    </p>
+    <p class="browse-page__count">
+      <strong>{gameCountLabel}</strong> published in the collection.
+    </p>
+  </header>
+
+  {
+    gameCount === 0 ? (
+      <p class="browse-empty">No games are published in the collection yet.</p>
+    ) : (
+      <>
+        <form class="browse-search" role="search" data-browse-search hidden>
+          <label for="browse-search-input">Search the collection</label>
+          <div class="browse-search__controls">
+            <input
+              id="browse-search-input"
+              name="query"
+              type="search"
+              inputmode="search"
+              autocomplete="off"
+              aria-controls="browse-game-list"
+            />
+            <button type="reset">Clear search</button>
+          </div>
+          <p
+            class="browse-search__status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            data-browse-status
+          />
+        </form>
+
+        <div class="browse-index">
+          <nav
+            class="browse-index__section"
+            aria-labelledby="browse-types-heading"
+          >
+            <h2 id="browse-types-heading">Browse by type</h2>
+            <ul class="browse-index__links browse-index__links--types">
+              {collection.types.map((type) => (
+                <li>
+                  <a href={`/browse/type/${type.slug}`}>
+                    <span>{type.label}</span>
+                    <span class="browse-index__count">
+                      {type.count} {type.count === 1 ? "game" : "games"}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav
+            class="browse-index__section"
+            aria-labelledby="browse-letters-heading"
+          >
+            <h2 id="browse-letters-heading">Browse alphabetically</h2>
+            <ul class="browse-index__links browse-index__links--letters">
+              {collection.letters.map((group) => (
+                <li>
+                  <a href={`#${group.anchor}`}>{group.letter}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <section class="browse-collection" aria-labelledby="collection-heading">
+          <div class="browse-section-heading">
+            <p class="eyebrow">Complete index</p>
+            <h2 id="collection-heading">All published games</h2>
+          </div>
+          <div id="browse-game-list">
+            {collection.letters.map((group) => (
+              <section
+                class="browse-letter-group"
+                id={group.anchor}
+                data-browse-group
+                aria-labelledby={`${group.anchor}-heading`}
+              >
+                <h2 id={`${group.anchor}-heading`}>{group.letter}</h2>
+                <BrowseGameList games={group.games} />
+              </section>
+            ))}
+          </div>
+          <p class="browse-search__empty" data-browse-empty hidden />
+        </section>
+        <script src="../scripts/browse-search.ts" />
+      </>
+    )
+  }
+</article>
