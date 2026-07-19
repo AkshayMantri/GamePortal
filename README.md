@@ -4,7 +4,13 @@ Game Portal is a strictly non-commercial, guest-first web application for browsi
 
 ## Repository status
 
-The independently verified bootstrap, Milestone 2A shell, and merged Milestone 2B Browse collection are complete. Milestone 2C adds the bounded party-size-first Find control on `/` and `/find`; matching, filters, results, canonical URL state, and persistence remain later slices. No production deployment or remote Cloudflare resource is part of this milestone.
+The independently verified bootstrap, Milestone 2A shell, Milestone 2B Browse
+collection, and Milestone 2C party-size control are complete. The Milestone 2D
+candidate adds typed practical setup filters, canonical `/find` URL state,
+Back/Forward restoration, and a progressively enhanced filter workspace.
+Matching, result counts, result tiers, ranking, and result cards remain later
+slices. No production deployment or remote Cloudflare resource is part of this
+milestone.
 
 ## Local setup
 
@@ -20,7 +26,7 @@ The local commands do not log in to Cloudflare, provision resources, deploy, or 
 
 The reviewed catalog proof set and the remaining verification work are recorded in [Catalog seed status](docs/catalog/SEED_STATUS.md). Local D1 setup is documented in [Local D1 link-health baseline](docs/d1-local.md).
 
-The shell, navigation, breakpoint, temporary-scaffold, and self-hosted font contracts are documented in [Shell and navigation](docs/ui/SHELL_AND_NAVIGATION.md). Browse publication, summary, route, enhancement, and layout behavior is documented in [Browse collection](docs/ui/BROWSE_COLLECTION.md). The Find interaction is documented in [Party-size-first Find control](docs/ui/PARTY_SIZE_CONTROL.md). Gated delivery state is recorded in the [Milestone 2A ledger](docs/delivery/MILESTONE_2A_LEDGER.md), [Milestone 2B ledger](docs/delivery/MILESTONE_2B_LEDGER.md), and [Milestone 2C ledger](docs/delivery/MILESTONE_2C_LEDGER.md).
+The shell, navigation, breakpoint, temporary-scaffold, and self-hosted font contracts are documented in [Shell and navigation](docs/ui/SHELL_AND_NAVIGATION.md). Browse publication, summary, route, enhancement, and layout behavior is documented in [Browse collection](docs/ui/BROWSE_COLLECTION.md). The Find interaction is documented in [Party-size-first Find control](docs/ui/PARTY_SIZE_CONTROL.md) and [Find filter state and canonical URLs](docs/ui/FILTER_STATE_AND_URLS.md). Gated delivery state is recorded in the [Milestone 2A ledger](docs/delivery/MILESTONE_2A_LEDGER.md), [Milestone 2B ledger](docs/delivery/MILESTONE_2B_LEDGER.md), [Milestone 2C ledger](docs/delivery/MILESTONE_2C_LEDGER.md), and [Milestone 2D ledger](docs/delivery/MILESTONE_2D_LEDGER.md).
 
 ## Development and verification
 

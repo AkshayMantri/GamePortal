@@ -1,37 +1,30 @@
 # Party-size-first Find control
 
-Milestone 2C replaces the temporary Find scaffold on both `/` and `/find` with
-one shared, progressively enhanced party-size control. Both routes remain
-`noindex,follow` and intentionally omit a canonical link under the current route
-strategy.
+Milestone 2D retains the Milestone 2C 1–99 parser, quick choices, custom Apply,
+Enter handling, and validation copy while integrating the valid committed value
+into the one canonical `FindFilterState`.
 
-## Contract
+## URL and history contract
 
-- The initial state is unset. There is no default party size.
-- Native radio choices cover 1 through 8, with an explicit “Another number”
-  path for whole numbers from 1 through 99.
-- The pure parser exposes only `unset`, `valid`, and `invalid` states. Its stable
-  errors are `required`, `not_integer`, `below_minimum`, and `above_maximum`.
-- Surrounding whitespace and leading zeroes normalize. Values are never rounded,
-  clamped, persisted, or silently coerced.
-- Quick choices commit immediately. Custom values commit only through the Apply
-  button or Enter. Validation never moves focus.
-- A visible receipt exposes the canonical value. A concise polite live region
-  announces deliberate commits and validation errors.
-- With JavaScript disabled, the heading, fieldset, native controls, explanatory
-  copy, and Browse link remain available; the page does not claim a value was
-  applied.
+- The initial value remains unset; there is no default.
+- A quick choice or valid custom commit pushes one `/find?players=<1–99>`
+  history entry only when the value changes.
+- Typing in the custom field does not change the committed URL.
+- Invalid custom input remains visible, does not change the URL, and does not
+  move focus.
+- Initial URL cleanup uses `replaceState`; Back/Forward restoration uses
+  `popstate` without writing another entry.
+- The active-setup summary owns the committed receipt and exposes a real
+  `Remove N players filter` button. Clear all removes party size with the other
+  active constraints.
 
-## Explicit boundary
+The parser still distinguishes `unset`, `valid(value)`, and
+`invalid(input,error)`. The canonical filter state contains only the normalized
+number or `null`; it does not duplicate invalid draft input.
 
-This slice does not match or filter games, show result counts or cards, serialize
-URL state, use browser storage, call a network service, write analytics, or touch
-accounts, catalog data, D1, or external destinations. Browse remains the peer
-exploration path and makes no compatibility claim.
+## Boundary
 
-## Accessibility and layout
-
-The implementation uses a native fieldset, legend, radios, labels, number input,
-and button. Targets are at least 44 CSS pixels; focus remains visible and clears
-the compact fixed navigation. The layout reflows from 320px through 1440px and
-retains forced-colors and reduced-motion behavior from the shared shell.
+Party size participates only in setup state in Milestone 2D. No game is
+evaluated, filtered, counted, ranked, or rendered as a result. With JavaScript
+disabled, native party controls remain readable but do not claim that a query
+or control value has been applied.

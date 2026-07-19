@@ -180,7 +180,13 @@ Do not store:
 
 - No child accounts.
 - No “enter your child’s age/name” profile.
-- Youngest-age filter is a transient number and is not persisted by default.
+- Youngest-age filter is a coarse whole-years setup constraint, never a birth
+  date or child profile. Under D-030 it may appear in the deliberately
+  user-controlled canonical Find URL after entry or when a shared link is
+  opened. It is not inferred and is not persisted to localStorage,
+  sessionStorage, cookies, accounts, Library/profile data, D1, server storage,
+  logs, or analytics. Clearing the filter removes it from the URL. Account or
+  Library absorption requires a new explicit decision.
 - Under-13 event participation is represented as an adult-mediated seat, not a child record.
 - Event copy instructs adults not to enter a child’s name or contact details.
 - Analytics must not infer or retain a child identity.
