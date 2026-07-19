@@ -1,7 +1,6 @@
 import { expect, test } from "@playwright/test";
 
 const routes = [
-  { path: "/find", title: "Find | Game Portal", heading: "Find" },
   { path: "/random", title: "Random | Game Portal", heading: "Random" },
   { path: "/vote", title: "Vote | Game Portal", heading: "Vote" },
   {

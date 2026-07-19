@@ -1,10 +1,104 @@
 ---
-import RouteScaffold from "./RouteScaffold.astro";
+import { PARTY_SIZE_QUICK_CHOICES } from "../find/party-size";
+import "../styles/find.css";
 ---
 
-<RouteScaffold
-  eyebrow="Find a game"
-  heading="Find"
-  purpose="Find will help a group choose games that fit its party size and practical constraints."
-  forthcoming="Party-size selection, filters, and results belong to later Milestone 2 slices and are not implemented here."
-/>
+<section class="find-page" aria-labelledby="find-heading">
+  <header class="find-page__header">
+    <p class="eyebrow">Find a game</p>
+    <h1 id="find-heading">Find</h1>
+    <p class="find-page__intro">
+      Start with the number of people playing. More practical filters and game
+      results will follow in later milestones.
+    </p>
+  </header>
+
+  <fieldset
+    class="party-size-control"
+    data-party-size-control
+    data-party-size-state="unset"
+  >
+    <legend>How many are playing?</legend>
+    <p class="party-size-control__hint" id="party-size-hint">
+      Choose a common group size, or enter any whole number from 1 to 99.
+    </p>
+
+    <div class="party-size-options" aria-describedby="party-size-hint">
+      {
+        PARTY_SIZE_QUICK_CHOICES.map((value) => (
+          <label class="party-size-option">
+            <input
+              type="radio"
+              name="party-size-choice"
+              value={value}
+              data-party-size-quick
+            />
+            <span>{value}</span>
+          </label>
+        ))
+      }
+      <label class="party-size-option party-size-option--custom">
+        <input
+          type="radio"
+          name="party-size-choice"
+          value="custom"
+          data-party-size-custom-choice
+        />
+        <span>Another number</span>
+      </label>
+    </div>
+
+    <div class="party-size-custom">
+      <div class="party-size-custom__field">
+        <label for="party-size-custom-input">Party size</label>
+        <input
+          id="party-size-custom-input"
+          type="number"
+          min="1"
+          max="99"
+          step="1"
+          inputmode="numeric"
+          autocomplete="off"
+          aria-describedby="party-size-custom-hint"
+          data-party-size-custom-input
+        />
+        <p class="party-size-custom__hint" id="party-size-custom-hint">
+          Whole numbers from 1 to 99.
+        </p>
+        <p
+          class="party-size-error"
+          id="party-size-error"
+          data-party-size-error
+          hidden
+        >
+        </p>
+      </div>
+      <button type="button" data-party-size-apply>Apply party size</button>
+    </div>
+  </fieldset>
+
+  <p class="party-size-receipt" data-party-size-receipt>
+    No party size selected.
+  </p>
+  <p
+    class="party-size-live"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-party-size-live
+  >
+  </p>
+
+  <noscript>
+    <p class="find-page__browse">
+      Party-size confirmation needs JavaScript. The controls remain available,
+      and the collection can still be browsed below.
+    </p>
+  </noscript>
+  <p class="find-page__browse">
+    Prefer to explore first? <a href="/browse">Browse the collection</a>. Browse
+    does not claim compatibility for the current group.
+  </p>
+</section>
+
+<script src="../scripts/party-size-control.ts"></script>

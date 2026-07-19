@@ -67,8 +67,12 @@ test("renders a semantic static shell without overflow or external assets", asyn
   expect(hasHorizontalOverflow).toBe(false);
 
   await expect(page.locator("astro-island")).toHaveCount(0);
-  await expect(page.locator("script")).toHaveCount(0);
-  expect(resourceRequests.filter(({ type }) => type === "script")).toEqual([]);
+  await expect(page.locator("script")).toHaveCount(1);
+  expect(
+    resourceRequests
+      .filter(({ type }) => type === "script")
+      .every(({ url }) => new URL(url).origin === new URL(page.url()).origin),
+  ).toBe(true);
 
   const pageOrigin = new URL(page.url()).origin;
   const externalFontOrMedia = resourceRequests.filter(({ type, url }) => {
@@ -80,7 +84,7 @@ test("renders a semantic static shell without overflow or external assets", asyn
   expect(externalFontOrMedia).toEqual([]);
 });
 
-test("keeps the bounded Browse enhancement inline and all other pages script-free", async () => {
+test("keeps client code bounded to Browse and the two shared Find routes", async () => {
   const distRoot = resolve(process.cwd(), "dist");
   const files = await listFiles(distRoot);
   const javascriptAssets = files.filter((path) => /\.(?:c|m)?js$/i.test(path));
@@ -97,9 +101,11 @@ test("keeps the bounded Browse enhancement inline and all other pages script-fre
   const scriptedPages = htmlDocuments
     .filter(({ html }) => /<script\b/i.test(html))
     .map(({ path }) => path.replaceAll("\\", "/"));
-  expect(scriptedPages).toEqual([
-    resolve(process.cwd(), "dist/browse/index.html").replaceAll("\\", "/"),
-  ]);
+  expect(scriptedPages).toEqual(
+    ["dist/browse/index.html", "dist/find/index.html", "dist/index.html"].map(
+      (path) => resolve(process.cwd(), path).replaceAll("\\", "/"),
+    ),
+  );
   for (const { html } of htmlDocuments) {
     expect(html).not.toMatch(/<astro-island\b/i);
     expect(html).not.toMatch(/\/_astro\/[^"']+\.(?:c|m)?js\b/i);
@@ -162,6 +168,10 @@ test("keeps the Find scaffold readable when JavaScript is disabled", async ({
   ).toBeVisible();
   await expect(
     noScriptPage.getByRole("link", { name: "Browse", exact: true }).first(),
+  ).toBeVisible();
+  await expect(noScriptPage.getByRole("radio")).toHaveCount(9);
+  await expect(
+    noScriptPage.getByRole("button", { name: "Apply party size" }),
   ).toBeVisible();
   await context.close();
 });
