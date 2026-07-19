@@ -69,8 +69,8 @@
     },
     {
       "name": "DECISION_LOG.md",
-      "bytes": 13377,
-      "sha256": "cf6b5167788fb1d2cb67fe58ef765118911bf1a8fb8a05ebaa3f52b43a0a6f58"
+      "bytes": 13914,
+      "sha256": "420ac9722d75b9997f366bbd89c5f1212b94eb6a63ad4cb3d4b6a2bc03a786b2"
     },
     {
       "name": "GAME_TAXONOMY.md",
@@ -104,8 +104,8 @@
     },
     {
       "name": "SAFETY_AND_PRIVACY.md",
-      "bytes": 11179,
-      "sha256": "3bbf837ef3b95e67d74e590dd18a5a343db7ef88eca421b907138bc58b0b4d6a"
+      "bytes": 11604,
+      "sha256": "d962db60211072c8a80394fe0e7189102142765f63b23c72af3e420ff3ac76d4"
     },
     {
       "name": "UI_DIRECTION.md",
