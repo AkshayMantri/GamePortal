@@ -1,6 +1,14 @@
 ---
 import { PARTY_SIZE_QUICK_CHOICES } from "../find/party-size";
+import type { FindFilterOptions } from "../find/filter-options";
+import FindFilterForm from "./FindFilterForm.astro";
 import "../styles/find.css";
+
+interface Props {
+  options: FindFilterOptions;
+}
+
+const { options } = Astro.props;
 ---
 
 <section class="find-page" aria-labelledby="find-heading">
@@ -8,8 +16,8 @@ import "../styles/find.css";
     <p class="eyebrow">Find a game</p>
     <h1 id="find-heading">Find</h1>
     <p class="find-page__intro">
-      Start with the number of people playing. More practical filters and game
-      results will follow in later milestones.
+      Set up the people, time, and practical constraints for a game night. This
+      milestone saves the setup in the page address; matching comes later.
     </p>
   </header>
 
@@ -77,28 +85,80 @@ import "../styles/find.css";
     </div>
   </fieldset>
 
-  <p class="party-size-receipt" data-party-size-receipt>
-    No party size selected.
+  <p class="find-page__browse">
+    Prefer to explore first? <a href="/browse">Browse the collection</a>. Browse
+    does not claim compatibility for the current group.
   </p>
+
+  <section class="find-summary" aria-labelledby="find-summary-heading">
+    <h2 id="find-summary-heading">Active setup</h2>
+    <p data-find-empty-summary>No filters are active yet.</p>
+    <div class="find-shared-link-notice" data-find-link-notice hidden>
+      <p>
+        Some settings in this shared link could not be used. The remaining setup
+        has been restored.
+      </p>
+      <button type="button" data-find-link-dismiss>Dismiss notice</button>
+    </div>
+    <ul class="find-summary__list" data-find-summary-list hidden></ul>
+    <button type="button" class="find-clear" data-find-clear hidden
+      >Clear all</button
+    >
+  </section>
+
+  <div class="find-filter-entry">
+    <button
+      type="button"
+      class="find-filter-trigger"
+      data-filter-open
+      aria-haspopup="dialog"
+      aria-controls="find-filter-dialog">More filters</button
+    >
+  </div>
+
+  <div
+    class="find-workspace"
+    data-find-controller
+    data-find-options={JSON.stringify(options)}
+  >
+    <div class="find-workspace__desktop" data-filter-desktop-host>
+      <FindFilterForm {options} />
+    </div>
+    <dialog
+      class="find-filter-dialog"
+      id="find-filter-dialog"
+      aria-labelledby="find-filter-heading"
+      data-filter-dialog
+    >
+      <div class="find-filter-dialog__body" data-filter-dialog-host></div>
+    </dialog>
+  </div>
+
+  <aside class="find-semantics" aria-labelledby="find-semantics-heading">
+    <h2 id="find-semantics-heading">How this setup will be used</h2>
+    <p>
+      A later milestone will separate exact compatibility from uncertain data.
+      Unknown information will not silently satisfy a strict filter. No games
+      are matched or counted here yet.
+    </p>
+  </aside>
+
   <p
     class="party-size-live"
     role="status"
     aria-live="polite"
     aria-atomic="true"
-    data-party-size-live
+    data-find-live
   >
   </p>
 
   <noscript>
-    <p class="find-page__browse">
-      Party-size confirmation needs JavaScript. The controls remain available,
-      and the collection can still be browsed below.
+    <p class="find-noscript">
+      Applying and restoring a shareable setup requires JavaScript. These labels
+      remain available as preparation notes; you can also
+      <a href="/browse">browse the collection</a> without setting filters.
     </p>
   </noscript>
-  <p class="find-page__browse">
-    Prefer to explore first? <a href="/browse">Browse the collection</a>. Browse
-    does not claim compatibility for the current group.
-  </p>
 </section>
 
-<script src="../scripts/party-size-control.ts"></script>
+<script src="../scripts/find-filter-controller.ts"></script>
