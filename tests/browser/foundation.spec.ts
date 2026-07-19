@@ -88,7 +88,10 @@ test("keeps client code bounded to Browse and the two shared Find routes", async
   const distRoot = resolve(process.cwd(), "dist");
   const files = await listFiles(distRoot);
   const javascriptAssets = files.filter((path) => /\.(?:c|m)?js$/i.test(path));
-  expect(javascriptAssets).toEqual([]);
+  expect(javascriptAssets).toHaveLength(1);
+  expect(javascriptAssets[0].replaceAll("\\", "/")).toMatch(
+    /\/dist\/_astro\/[^/]+\.js$/,
+  );
 
   const htmlFiles = files.filter((path) => path.endsWith(".html"));
   expect(htmlFiles).toHaveLength(13);
@@ -106,10 +109,55 @@ test("keeps client code bounded to Browse and the two shared Find routes", async
       (path) => resolve(process.cwd(), path).replaceAll("\\", "/"),
     ),
   );
-  for (const { html } of htmlDocuments) {
+
+  const externalScriptReferences = htmlDocuments.flatMap(({ path, html }) =>
+    Array.from(
+      html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi),
+      ([, source]) => ({
+        path: path.replaceAll("\\", "/"),
+        source,
+      }),
+    ),
+  );
+  expect(externalScriptReferences).toHaveLength(2);
+  expect(externalScriptReferences.map(({ path }) => path)).toEqual(
+    ["dist/find/index.html", "dist/index.html"].map((path) =>
+      resolve(process.cwd(), path).replaceAll("\\", "/"),
+    ),
+  );
+  expect(
+    new Set(externalScriptReferences.map(({ source }) => source)).size,
+  ).toBe(1);
+  const [findControllerSource] = externalScriptReferences.map(
+    ({ source }) => source,
+  );
+  expect(findControllerSource).toMatch(/^\/_astro\/[^/]+\.js$/);
+  expect(resolve(distRoot, `.${findControllerSource}`)).toBe(
+    javascriptAssets[0],
+  );
+
+  for (const { path, html } of htmlDocuments) {
     expect(html).not.toMatch(/<astro-island\b/i);
-    expect(html).not.toMatch(/\/_astro\/[^"']+\.(?:c|m)?js\b/i);
     expect(html).not.toMatch(/react(?:-dom)?|__REACT/i);
+    expect(html).not.toMatch(
+      /<script\b[^>]*\bsrc=["'](?:https?:)?\/\/[^"']+["']/i,
+    );
+
+    const scriptSources = Array.from(
+      html.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/gi),
+      ([, source]) => source,
+    );
+    const normalizedPath = path.replaceAll("\\", "/");
+    if (
+      normalizedPath ===
+        resolve(process.cwd(), "dist/index.html").replaceAll("\\", "/") ||
+      normalizedPath ===
+        resolve(process.cwd(), "dist/find/index.html").replaceAll("\\", "/")
+    ) {
+      expect(scriptSources).toEqual([findControllerSource]);
+    } else {
+      expect(scriptSources).toEqual([]);
+    }
   }
 });
 
@@ -169,7 +217,21 @@ test("keeps the Find scaffold readable when JavaScript is disabled", async ({
   await expect(
     noScriptPage.getByRole("link", { name: "Browse", exact: true }).first(),
   ).toBeVisible();
-  await expect(noScriptPage.getByRole("radio")).toHaveCount(9);
+  await expect(noScriptPage.locator("form[data-find-filter-form]")).toHaveCount(
+    1,
+  );
+  await expect(
+    noScriptPage.getByRole("group", { name: "1. Together or remote?" }),
+  ).toBeVisible();
+  await expect(
+    noScriptPage.getByRole("group", { name: "3. Youngest player" }),
+  ).toBeVisible();
+  await expect(
+    noScriptPage.getByText(
+      "A later milestone will separate exact compatibility from uncertain data.",
+      { exact: false },
+    ),
+  ).toBeVisible();
   await expect(
     noScriptPage.getByRole("button", { name: "Apply party size" }),
   ).toBeVisible();
